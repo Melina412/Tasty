@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import FetchAPI from "../functions/FetchAPI";
-import AreasSlider from "../components/AreasSlider";
+import AreasSlider from "../components/sliders/AreasSlider";
 
 const Home = () => {
   const [apiData, setApiData] = useState();
@@ -8,7 +8,7 @@ const Home = () => {
     async function fetchData() {
       // You can await here
       const response = await FetchAPI("random.php");
-      console.log(response);
+      console.log("Von Home==> ", response);
       // ...
     }
     fetchData();

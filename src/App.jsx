@@ -5,6 +5,9 @@ import Onboarding from "./pages/Onboarding";
 import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
+import CategoryAreaCards from "./components/CategoryAreaCards";
+import CategoriesButtonList from "./components/CategoriesButtonList";
+import CategoryAreaList from "./components/CategoryAreaList";
 
 function App() {
   return (
@@ -14,6 +17,11 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/search/:type/:name" element={<SearchPage />} />
         <Route path="/detail/:id" element={<DetailPage />} />
+        <Route path="/categoryAreaList/:area" element={<CategoryAreaList />} />
+        <Route
+          path="/categoriebuttonlist/"
+          element={<CategoriesButtonList />}
+        />
       </Routes>
     </BrowserRouter>
   );
