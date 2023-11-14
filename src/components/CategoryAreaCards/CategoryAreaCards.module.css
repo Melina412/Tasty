@@ -4,19 +4,14 @@
   box-sizing: border-box;
 }
 
-/* .list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  width: 375px;
-  padding: 20px;
-  margin: 0 auto;
-} */
-
 /* ----------------------------------------------- */
 
 .card {
   width: 100%;
+}
+
+.link {
+  text-decoration: none;
 }
 
 .container {
@@ -39,7 +34,12 @@
 .name {
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-size: 16px;
-  /* font-weight: 400 */
   line-height: 145%;
   color: var(--neutral-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  max-width: 100px;
+  /* - max-width muss bei responsive raus, aber nur so geht das mit dem text-wrap */
 }
