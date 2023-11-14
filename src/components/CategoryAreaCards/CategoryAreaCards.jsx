@@ -4,7 +4,7 @@ import styles from "./CategoryAreaCards.module.css";
 const CategoryAreaCards = (props) => {
   return (
     <article className={styles.card}>
-      <Link className={styles.link} to={`/details/${props.item.idMeal}`}>
+      <Link className={styles.link} to={`/detail/${props.item.idMeal}`}>
         <div className={styles.container}>
           <div className={styles.imgContainer}>
             <img

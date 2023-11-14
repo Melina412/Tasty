@@ -7,14 +7,15 @@ import styles from "./SearchPage.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { useEffect, useRef, useState } from 'react';
-import FetchAPI from '../functions/FetchAPI';
+import { useEffect, useRef, useState } from "react";
+import FetchAPI from "../functions/FetchAPI";
 
-import SearchButtonList from '../components/SearchButtonList';
-import Slider from 'react-slick';
-import SearchBox from '../components/SearchBox';
-import List from '../components/List/List';
-import { returnSettings } from '../functions/setSliderSettings';
+import SearchButtonList from "../components/SearchButtonList";
+import Slider from "react-slick";
+import SearchBox from "../components/SearchBox";
+import List from "../components/List/List";
+import NavBar from "../components/NavBar";
+import { returnSettings } from "../functions/setSliderSettings";
 
 let settings = null;
 
@@ -63,7 +64,11 @@ const SearchPage = () => {
 
       // slider settings
       settings = returnSettings(
-        response.categories ? response.categories : response.meals ? response.meals : [],
+        response.categories
+          ? response.categories
+          : response.meals
+          ? response.meals
+          : [],
         name
       );
 
@@ -89,7 +94,9 @@ const SearchPage = () => {
     setSearchInput(_val);
     if (_val) {
       const filteredResult = {
-        meals: currentData.meals?.filter((item) => item.strMeal.startsWith(_val.toUpperCase())),
+        meals: currentData.meals?.filter((item) =>
+          item.strMeal.startsWith(_val.charAt(0).toUpperCase() + _val.slice(1))
+        ),
       };
       setCurrentData(filteredResult);
     } else {
@@ -106,7 +113,10 @@ const SearchPage = () => {
           </Link>
           <h2 className={styles.h2}>Search</h2>
         </article>
-        <SearchBox onHandleSearchByType={handleSearchByType} searchInput={searchInput} />
+        <SearchBox
+          onHandleSearchByType={handleSearchByType}
+          searchInput={searchInput}
+        />
       </section>
 
       <section className={styles.content_section}>
@@ -135,7 +145,11 @@ const SearchPage = () => {
                   See All
                 </Link>
                 {settings && (
-                  <Slider {...settings} className={styles.buttons_named} ref={sliderRef}>
+                  <Slider
+                    {...settings}
+                    className={styles.buttons_named}
+                    ref={sliderRef}
+                  >
                     {typeState.map((ts) => {
                       return (
                         <SearchButtonList
@@ -144,7 +158,9 @@ const SearchPage = () => {
                             .charAt(0)
                             .toLowerCase()}${ts.strCategory.slice(1)}`}
                           categoryName={ts.strCategory}
-                          typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                          typeName={`${name
+                            .charAt(0)
+                            .toUpperCase()}${name.slice(1)}`}
                         />
                       );
                     })}
@@ -185,16 +201,22 @@ const SearchPage = () => {
                   See All
                 </Link>
                 (
-                <Slider {...settings} className={styles.buttons_named} ref={sliderRef}>
+                <Slider
+                  {...settings}
+                  className={styles.buttons_named}
+                  ref={sliderRef}
+                >
                   {typeState.map((ts) => {
                     return (
                       <SearchButtonList
                         key={crypto.randomUUID()}
-                        linkName={`areas/${ts.strArea.charAt(0).toLowerCase()}${ts.strArea.slice(
+                        linkName={`areas/${ts.strArea
+                          .charAt(0)
+                          .toLowerCase()}${ts.strArea.slice(1)}`}
+                        categoryName={ts.strArea}
+                        typeName={`${name.charAt(0).toUpperCase()}${name.slice(
                           1
                         )}`}
-                        categoryName={ts.strArea}
-                        typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
                       />
                     );
                   })}

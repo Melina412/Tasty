@@ -4,7 +4,7 @@ import styles from "./SearchResultCards.module.css";
 const SearchResultCards = (props) => {
   return (
     <article className={styles.card}>
-      <Link to={`/details/${props.item.idMeal}`}>
+      <Link to={`/detail/${props.item.idMeal}`}>
         <div className={styles.container}>
           {/*  */}
           <div className={styles.img_container}>

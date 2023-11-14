@@ -49,7 +49,7 @@ const AreasSlider = () => {
                   index === 0 ? styles.firstArea : ""
                 }`}
               >
-                <Link to={`/search/areas/${area.description}`}>
+                <Link to={`/search/areas/${area.description.toLowerCase()}`}>
                   {area.description}
                 </Link>
               </div>
