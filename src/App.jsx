@@ -27,7 +27,7 @@ function App() {
                 <Route path="/" element={<Onboarding />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/search" element={<SearchPage />} />
-                <Route path="/detail/:id" element={<DetailPage />} />
+                <Route path="/detail" element={<DetailPage />} />
               </Routes>
             </BrowserRouter>
           ) : (
