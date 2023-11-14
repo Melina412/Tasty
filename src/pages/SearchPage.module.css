@@ -1,0 +1,61 @@
+p,
+input {
+  font-size: 1.6rem;
+}
+
+a,
+button {
+  font-size: 1.2rem;
+}
+
+.h2 {
+  font-size: 2.4rem;
+}
+
+.see_all {
+  float: right;
+  text-decoration: none;
+  color: #70b9be;
+  font-weight: 800;
+  margin-left: auto;
+  padding-bottom: 15px;
+  padding-right: 15px;
+}
+
+.header_section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.search_header {
+  display: flex;
+  align-items: center;
+  gap: 25%;
+  margin: 0 2.5vw;
+}
+
+.main {
+  margin: 75px auto;
+}
+
+.content_section {
+  margin-top: 75px;
+}
+
+.article_section {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons_all {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3%;
+  justify-content: center;
+}
+
+.buttons_named button {
+  margin-right: 10px;
+  width: 30%;
+}

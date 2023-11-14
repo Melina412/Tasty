@@ -1,0 +1,19 @@
+.navbar {
+  position: fixed;
+  bottom: 0;
+  height: 10%;
+  background-color: white;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar button {
+  border: none;
+  background-color: transparent;
+}
+
+.active {
+  fill: aqua;
+}

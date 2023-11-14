@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.search_result_list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: 390px;
+  padding: 20px;
+  margin: 35px auto;
+}
+.category_area_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 390px;
+  /* padding: 20px; */
+  margin: 35px auto;
+}
