@@ -57,7 +57,7 @@ const SearchPage = () => {
         name
       );
 
-      sliderRef.current.slickGoTo(settings.initialSlide);
+      sliderRef && sliderRef.current.slickGoTo(settings.initialSlide);
 
       // Wir fetchen daten insofern name != all
       if (name !== 'all') {
