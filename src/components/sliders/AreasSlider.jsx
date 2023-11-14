@@ -40,17 +40,13 @@ const AreasSlider = () => {
       <section className="areasSlider">
         <div className={styles.sliderHeader}>
           <h3>Areas</h3>
-          {areas.length > 1 && (
-            <Link to="/categoriebuttonlist" state={{ areas }}>
-              See All
-            </Link>
-          )}
+          {areas.length > 1 && <Link to="/search/areas/all">See All</Link>}
         </div>
         {areas.length > 0 && (
           <Slider {...settings}>
             {areas.map((area, index) => (
               <div key={index}>
-                <Link to={`/categoryAreaList/${area.description}`}>
+                <Link to={`/search/areas/${area.description}`}>
                   {area.description}
                 </Link>
               </div>

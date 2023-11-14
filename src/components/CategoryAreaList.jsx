@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 const CategoryAreaList = () => {
-  const { area } = useParams();
-  console.log("von CategoryAreaList==> ", area);
+  const { param } = useParams();
+  console.log("von CategoryAreaList==> ", param);
   return <></>;
 };
 

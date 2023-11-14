@@ -17,8 +17,6 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/search/:type/:name" element={<SearchPage />} />
         <Route path="/detail/:id" element={<DetailPage />} />
-        <Route path="/categoryAreaList/:area" element={<CategoryAreaList />} />
-        <Route path="/categoryAreaList/:id" element={<CategoryAreaList />} />
         <Route
           path="/categoriebuttonlist/"
           element={<CategoriesButtonList />}

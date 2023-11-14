@@ -17,9 +17,7 @@ const CategoriesSlider = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        // You can await here
         const response = await FetchAPI("categories.php");
-
         if (response && response.categories) {
           const categorysItem = response.categories.map((category) => ({
             categoryId: category.idCategory,
@@ -41,16 +39,16 @@ const CategoriesSlider = () => {
         <div className={styles.sliderHeader}>
           <h3>Categories</h3>
           {categorys.length > 1 && (
-            <Link to="/categoriebuttonlist" state={{ categorys }}>
-              See All
-            </Link>
+            <Link to="/search/categories/all">See All</Link>
           )}
         </div>
         {categorys.length > 0 && (
           <Slider {...settings}>
             {categorys.map((category, index) => (
               <div key={index}>
-                <Link to={`/categoryAreaList/${category.categoryId}`}>
+                <Link
+                  to={`/categoryAreaList/categories/${category.categoryName}`}
+                >
                   <div>
                     <img
                       src={category.categoryImg}
