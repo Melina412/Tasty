@@ -8,15 +8,15 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  width: 375px;
+  width: 390px;
   padding: 20px;
-  margin: 0 auto;
+  margin: 35px auto;
 }
 .category_area_list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  width: 375px;
-  padding: 20px;
-  margin: 0 auto;
+  width: 390px;
+  /* padding: 20px; */
+  margin: 35px auto;
 }

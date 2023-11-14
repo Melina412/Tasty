@@ -1,11 +1,11 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { Link, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { Link, useParams } from "react-router-dom";
 
 /* CSS */
-import styles from './SearchPage.module.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import styles from "./SearchPage.module.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { useEffect, useRef, useState } from 'react';
 import FetchAPI from '../functions/FetchAPI';
@@ -23,23 +23,27 @@ let tempData = null;
 const SearchPage = () => {
   const [currentData, setCurrentData] = useState([]);
   const [typeState, setTypeState] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
 
   const { type, name } = useParams();
 
   const sliderRef = useRef();
 
   useEffect(() => {
-    let typeUrl = '';
-    let nameUrl = '';
+    let typeUrl = "";
+    let nameUrl = "";
     switch (type) {
-      case 'categories':
-        typeUrl = 'categories.php';
-        nameUrl = `filter.php?c=${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+      case "categories":
+        typeUrl = "categories.php";
+        nameUrl = `filter.php?c=${name.charAt(0).toUpperCase()}${name.slice(
+          1
+        )}`;
         break;
-      case 'areas':
-        typeUrl = 'list.php?a=list';
-        nameUrl = `filter.php?a=${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+      case "areas":
+        typeUrl = "list.php?a=list";
+        nameUrl = `filter.php?a=${name.charAt(0).toUpperCase()}${name.slice(
+          1
+        )}`;
         break;
 
       default:
@@ -49,7 +53,13 @@ const SearchPage = () => {
     async function fetchData(_typeUrl, _callback) {
       const response = await FetchAPI(_typeUrl);
 
-      _callback(response.categories ? response.categories : response.meals ? response.meals : []); // für category response.categories
+      _callback(
+        response.categories
+          ? response.categories
+          : response.meals
+          ? response.meals
+          : []
+      ); // für category response.categories
 
       // slider settings
       settings = returnSettings(
@@ -60,7 +70,7 @@ const SearchPage = () => {
       sliderRef.current && sliderRef.current.slickGoTo(settings.initialSlide);
 
       // Wir fetchen daten insofern name != all
-      if (name !== 'all') {
+      if (name !== "all") {
         fetchDataByName(nameUrl, setCurrentData);
       }
     }
@@ -101,8 +111,8 @@ const SearchPage = () => {
 
       <section className={styles.content_section}>
         {typeState && typeState.length > 0 ? (
-          type === 'categories' ? (
-            name === 'all' ? (
+          type === "categories" ? (
+            name === "all" ? (
               <article className={styles.buttons_all}>
                 {typeState.map((ts) => {
                   return (
@@ -112,7 +122,9 @@ const SearchPage = () => {
                         .charAt(0)
                         .toLowerCase()}${ts.strCategory.slice(1)}`}
                       categoryName={ts.strCategory}
-                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(
+                        1
+                      )}`}
                     />
                   );
                 })}
@@ -149,16 +161,20 @@ const SearchPage = () => {
                 )}
               </article>
             )
-          ) : type === 'areas' ? (
-            name === 'all' ? (
+          ) : type === "areas" ? (
+            name === "all" ? (
               <article className={styles.buttons_all}>
                 {typeState.map((ts) => {
                   return (
                     <SearchButtonList
                       key={ts.strArea}
-                      linkName={`areas/${ts.strArea.charAt(0).toLowerCase()}${ts.strArea.slice(1)}`}
+                      linkName={`areas/${ts.strArea
+                        .charAt(0)
+                        .toLowerCase()}${ts.strArea.slice(1)}`}
                       categoryName={ts.strArea}
-                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(
+                        1
+                      )}`}
                     />
                   );
                 })}

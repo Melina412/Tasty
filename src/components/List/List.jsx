@@ -3,42 +3,30 @@ import CategoryAreaCards from '../CategoryAreaCards/CategoryAreaCards.jsx';
 import styles from './List.module.css';
 
 const List = ({ currentData, categories }) => {
+  console.log({ currentData });
+  console.log({ categories });
+  // # die Klasse der section muss noch vertauscht werden, wenn der categories wert da ist
   return (
     <>
-      <section className={styles.category_area_list}>
-        <CategoryAreaCards
-          strMealThumb="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
-          strMeal="Irgendeine Pasta"
-        />
-        <CategoryAreaCards
-          strMealThumb="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
-          strMeal="Irgendeine Pasta"
-        />
-        <CategoryAreaCards
-          strMealThumb="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
-          strMeal="Irgendeine Pasta"
-        />
-        <CategoryAreaCards
-          strMealThumb="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
-          strMeal="Irgendeine Pasta"
-        />
-        <CategoryAreaCards
-          strMealThumb="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
-          strMeal="Irgendeine Pasta"
-        />
-        <CategoryAreaCards
-          strMealThumb="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
-          strMeal="Irgendeine Pasta"
-        />
-      </section>
-
-      <section className={styles.search_result_list}>
-        <SearchResultCards
-          strMealThumb="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
-          strMeal="Irgendeine Pasta"
-          strCategory="Random Category"
-          idMeal="52771"
-        />
+      <section
+        className={
+          categories ? styles.search_result_list : styles.category_area_list
+        }
+        // className={
+        //   categories ? styles.category_area_list : styles.search_result_list
+        // }
+      >
+        {currentData.meals && currentData.meals.length > 0 ? (
+          currentData.meals.map((item, index) =>
+            categories ? (
+              <SearchResultCards key={index} item={item} />
+            ) : (
+              <CategoryAreaCards key={index} item={item} />
+            )
+          )
+        ) : (
+          <p>noch keine Daten verfügbar...</p>
+        )}
       </section>
     </>
   );
