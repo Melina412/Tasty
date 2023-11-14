@@ -6,7 +6,7 @@ const FetchAPI = async (fetchParameter) => {
       return data;
     })
     .catch((error) => {
-      console.error('Ops! Fehler beim Abrufen der Daten: ', error);
+      console.error("Ops! Fehler beim Abrufen der Daten: ", error);
       return null;
     });
 };

@@ -1,0 +1,64 @@
+.loading {
+  background-color: #70b9be;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.flex p {
+  color: white;
+  font-size: 4.4rem;
+  font-family: Montserrat;
+  font-weight: 800;
+}
+
+.flex img {
+  display: block;
+  margin: 0 auto;
+  animation: hut 2s infinite;
+}
+
+/*- die Linien */
+.vektor1 {
+  position: fixed;
+  top: 0;
+  left: 5%;
+  width: 60%;
+}
+
+.vektor2 {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  width: 100%;
+}
+
+.vektor3 {
+  position: fixed;
+  bottom: 50px;
+  right: 0;
+  width: 100%;
+}
+
+.vektor4 {
+  position: fixed;
+  bottom: 0;
+  right: 10%;
+  width: 80%;
+}
+
+/*- die Animation */
+@keyframes hut {
+  0% {
+    transform: translateY(-150px) rotate(0);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(360deg);
+  }
+}
