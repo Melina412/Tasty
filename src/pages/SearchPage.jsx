@@ -218,6 +218,7 @@ const SearchPage = () => {
           <p>LOADING...</p>
         )}
       </section>
+      <NavBar />
     </main>
   );
 };
