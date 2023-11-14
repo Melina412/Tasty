@@ -1,0 +1,19 @@
+.random_meal h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.random_meal {
+  margin-bottom: 25px;
+}
+.meal_card {
+  border-radius: 15px;
+  background: url("../../public/img/randomMealCard.jpg") no-repeat center;
+  background-size: cover;
+  width: 80%;
+  overflow: hidden;
+}
+.meal_card h2 {
+}
+.img_random_meal {
+  width: 100px;
+}

@@ -7,8 +7,8 @@ import Slider from "react-slick";
 
 // CSS
 import styles from "./AreasSlider.module.css";
-import "./SliderStyle/slick.css";
-import "./SliderStyle/slickTheme.css";
+// import "./SliderStyle/slick.css";
+// import "./SliderStyle/slickTheme.css";
 import { settings } from "./SliderStyle/sliderSetting";
 
 const AreasSlider = () => {
@@ -35,7 +35,7 @@ const AreasSlider = () => {
 
   return (
     <>
-      <section className="areasSlider">
+      <section className={styles.areasSlider}>
         <div className={styles.sliderHeader}>
           <h3>Areas</h3>
           {areas.length > 1 && <Link to="/search/areas/all">See All</Link>}
@@ -43,7 +43,12 @@ const AreasSlider = () => {
         {areas.length > 0 && (
           <Slider {...settings}>
             {areas.map((area, index) => (
-              <div key={index}>
+              <div
+                key={index}
+                className={`${styles.btn_area} ${
+                  index === 0 ? styles.firstArea : ""
+                }`}
+              >
                 <Link to={`/search/areas/${area.description}`}>
                   {area.description}
                 </Link>

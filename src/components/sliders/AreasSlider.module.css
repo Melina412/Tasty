@@ -3,3 +3,22 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.btn_area {
+  border-radius: 37px;
+  background-color: #f1f5f5;
+  padding: 9px 24px;
+  width: 85px !important;
+  text-align: center;
+}
+.btn_area a .active {
+  background-color: var(--brand-secondary);
+}
+
+.btn_area a {
+  text-decoration: none;
+  color: var(--dark);
+}
+.firstArea {
+  background-color: var(--brand-secondary);
+}

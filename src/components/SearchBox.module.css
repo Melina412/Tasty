@@ -4,10 +4,11 @@
   margin: 0 auto;
   border-radius: 15px;
   border: 1px solid #e6ebf2;
+  font-size: 1rem;
 }
 
 .mag_glass_container {
   position: relative;
   width: 90%;
-  margin: 0 auto;
+  margin: 60px auto;
 }

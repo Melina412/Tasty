@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 /* CSS */
-import styles from './SearchBox.module.css';
+import styles from "./SearchBox.module.css";
 
 const SearchBox = ({ searchInput, onHandleSearchByType }) => {
   return (
@@ -11,11 +11,11 @@ const SearchBox = ({ searchInput, onHandleSearchByType }) => {
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
           style={{
-            color: '#000000',
-            height: '20px',
-            position: 'absolute',
-            top: '15px',
-            left: '10px ',
+            color: "#000000",
+            height: "20px",
+            position: "absolute",
+            top: "15px",
+            left: "10px ",
           }}
         />
 
