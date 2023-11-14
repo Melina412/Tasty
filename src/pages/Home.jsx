@@ -5,16 +5,6 @@ import CategoriesSlider from "../components/sliders/CategoriesSlider";
 import MealOfTheDay from "../components/MealOfTheDay";
 
 const Home = () => {
-  const [apiData, setApiData] = useState();
-  useEffect(() => {
-    async function fetchData() {
-      // You can await here
-      const response = await FetchAPI("random.php");
-      // console.log("Von Home==> ", response);
-      // ...
-    }
-    fetchData();
-  }, []);
   return (
     <>
       <MealOfTheDay />
