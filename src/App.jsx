@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
 
-import List from "./components/CategoryAreaCards/List";
+import List from "./components/List/List";
 
 function App() {
   return (

@@ -4,14 +4,14 @@
   box-sizing: border-box;
 }
 
-.list {
+/* .list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   width: 375px;
   padding: 20px;
   margin: 0 auto;
-}
+} */
 
 /* ----------------------------------------------- */
 
@@ -29,9 +29,6 @@
   box-shadow: 0px 2px 16px 0px rgba(6, 51, 54, 0.1);
   padding: 8px;
   background: var(--neutral-true-white);
-}
-
-.imgContainer {
 }
 
 .image {

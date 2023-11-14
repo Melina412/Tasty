@@ -1,8 +1,9 @@
-import CategoryAreaCards from "./CategoryAreaCards";
-import styles from "./CategoryAreaCards.module.css";
+import styles from "./List.module.css";
+import CategoryAreaCards from "../CategoryAreaCards/CategoryAreaCards.jsx";
+
 const List = () => {
   return (
-    <section className={styles.list}>
+    <section className={styles.category_area_list}>
       <CategoryAreaCards
         strMealThumb="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
         strMeal="Irgendeine Pasta"
