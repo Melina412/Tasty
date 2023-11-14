@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
 import Loadingscreen from "./pages/Loadingscreen";
+import List from "./components/List/List";
 
 //* UseContext für Darkmode und Loadingscreen
 import { LoadingContext } from "./context/Context";
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/search" element={<SearchPage />} />
                 <Route path="/detail" element={<DetailPage />} />
+                   <Route path="/list" element={<List />} />
               </Routes>
             </BrowserRouter>
           ) : (
