@@ -1,0 +1,52 @@
+.onboarding {
+  background-color: var(--brand-secondary);
+  height: 100vh;
+}
+
+.started {
+  background-color: white;
+  border-radius: 30px 30px 0 0;
+  height: 40%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.started h1 {
+  font-size: 2.8rem;
+  line-height: 130%;
+  margin: 40px 0 40px 0;
+}
+
+.started p {
+  color: var(--text-gray);
+  font-size: 1.8rem;
+  line-height: 140%;
+  margin: 0 25px 60px 25px;
+}
+
+.started a {
+  text-decoration: none;
+  color: white;
+  background-color: black;
+  padding: 15px 115px;
+  border-radius: 15px;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.started a:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  transition: all 1s;
+}
+
+.img {
+  width: 400px;
+  margin-top: -50px;
+  max-height: 60%;
+  display: block;
+  margin: 0 auto;
+}
