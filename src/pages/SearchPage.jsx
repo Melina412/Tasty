@@ -7,24 +7,18 @@ import styles from './SearchPage.module.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import FetchAPI from '../functions/FetchAPI';
 
 import SearchButtonList from '../components/SearchButtonList';
 import Slider from 'react-slick';
 import SearchBox from '../components/SearchBox';
 import List from '../components/List/List';
+import { returnSettings } from '../functions/setSliderSettings';
 
-const settings = {
-  rows: 1,
-  slidesPerRow: 3,
-  centerPadding: '10px',
-  centerMode: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
+let settings = null;
+
+let tempData = null;
 
 const SearchPage = () => {
   const [currentData, setCurrentData] = useState([]);
@@ -32,6 +26,8 @@ const SearchPage = () => {
   const [searchInput, setSearchInput] = useState('');
 
   const { type, name } = useParams();
+
+  const sliderRef = useRef();
 
   useEffect(() => {
     let typeUrl = '';
@@ -55,6 +51,14 @@ const SearchPage = () => {
 
       _callback(response.categories ? response.categories : response.meals ? response.meals : []); // für category response.categories
 
+      // slider settings
+      settings = returnSettings(
+        response.categories ? response.categories : response.meals ? response.meals : [],
+        name
+      );
+
+      sliderRef.current.slickGoTo(settings.initialSlide);
+
       // Wir fetchen daten insofern name != all
       if (name !== 'all') {
         fetchDataByName(nameUrl, setCurrentData);
@@ -67,24 +71,31 @@ const SearchPage = () => {
 
   async function fetchDataByName(_typeUrl, _callback) {
     const response = await FetchAPI(_typeUrl);
-    console.log(response);
     _callback(response);
+    tempData = response;
   }
 
   const handleSearchByType = (_val) => {
-    console.log(_val);
+    setSearchInput(_val);
+    if (_val) {
+      const filteredResult = {
+        meals: currentData.meals?.filter((item) => item.strMeal.startsWith(_val.toUpperCase())),
+      };
+      setCurrentData(filteredResult);
+    } else {
+      setCurrentData(tempData);
+    }
   };
 
   return (
     <main className={styles.main}>
-      <section>
+      <section className={styles.header_section}>
         <article className={styles.search_header}>
           <Link to="/home">
-            <FontAwesomeIcon icon={faArrowLeft} />
+            <FontAwesomeIcon icon={faArrowLeft} size="xl" />
           </Link>
-          <h2>Search</h2>
+          <h2 className={styles.h2}>Search</h2>
         </article>
-        {/* PLACEHOLDER SEARCHBOX!! BEGIN */}
         <SearchBox onHandleSearchByType={handleSearchByType} searchInput={searchInput} />
       </section>
 
@@ -107,22 +118,35 @@ const SearchPage = () => {
                 })}
               </article>
             ) : (
-              <article>
-                <Slider {...settings} className={styles.buttons_named}>
-                  {typeState.map((ts) => {
-                    return (
-                      <SearchButtonList
-                        key={ts.idCategory}
-                        linkName={`categories/${ts.strCategory
-                          .charAt(0)
-                          .toLowerCase()}${ts.strCategory.slice(1)}`}
-                        categoryName={ts.strCategory}
-                        typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
-                      />
-                    );
-                  })}
-                </Slider>
-                {currentData && <List currentData={currentData} categories={null} />}
+              <article className={styles.article_section}>
+                <Link className={styles.see_all} to="/search/categories/all">
+                  See All
+                </Link>
+                {settings && (
+                  <Slider {...settings} className={styles.buttons_named} ref={sliderRef}>
+                    {typeState.map((ts) => {
+                      return (
+                        <SearchButtonList
+                          key={ts.idCategory}
+                          linkName={`categories/${ts.strCategory
+                            .charAt(0)
+                            .toLowerCase()}${ts.strCategory.slice(1)}`}
+                          categoryName={ts.strCategory}
+                          typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                        />
+                      );
+                    })}
+                  </Slider>
+                )}
+                {currentData ? (
+                  searchInput.length > 0 ? (
+                    <List currentData={currentData} categories={name} />
+                  ) : (
+                    <List currentData={currentData} categories={null} />
+                  )
+                ) : (
+                  <p>Loading...</p>
+                )}
               </article>
             )
           ) : type === 'areas' ? (
@@ -140,18 +164,35 @@ const SearchPage = () => {
                 })}
               </article>
             ) : (
-              <article>
-                {typeState.map((ts) => {
-                  return (
-                    <SearchButtonList
-                      key={crypto.randomUUID()}
-                      linkName={`areas/${ts.strArea.charAt(0).toLowerCase()}${ts.strArea.slice(1)}`}
-                      categoryName={ts.strArea}
-                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
-                    />
-                  );
-                })}
-                {currentData && <List currentData={currentData} categories={null} />}
+              <article className={styles.article_section}>
+                <Link className={styles.see_all} to="/search/areas/all">
+                  See All
+                </Link>
+                (
+                <Slider {...settings} className={styles.buttons_named} ref={sliderRef}>
+                  {typeState.map((ts) => {
+                    return (
+                      <SearchButtonList
+                        key={crypto.randomUUID()}
+                        linkName={`areas/${ts.strArea.charAt(0).toLowerCase()}${ts.strArea.slice(
+                          1
+                        )}`}
+                        categoryName={ts.strArea}
+                        typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                      />
+                    );
+                  })}
+                </Slider>
+                )
+                {currentData ? (
+                  searchInput.length > 0 ? (
+                    <List currentData={currentData} categories={name} />
+                  ) : (
+                    <List currentData={currentData} categories={null} />
+                  )
+                ) : (
+                  <p>Loading...</p>
+                )}
               </article>
             )
           ) : (

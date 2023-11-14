@@ -1,10 +1,8 @@
-import SearchResultCards from "../SearchResultCards/SearchResultCards";
-import CategoryAreaCards from "../CategoryAreaCards/CategoryAreaCards.jsx";
-import styles from "./List.module.css";
+import SearchResultCards from '../SearchResultCards/SearchResultCards';
+import CategoryAreaCards from '../CategoryAreaCards/CategoryAreaCards.jsx';
+import styles from './List.module.css';
 
 const List = ({ currentData, categories }) => {
-  console.log({ currentData });
-  console.log({ categories });
   return (
     <>
       <section className={styles.category_area_list}>
