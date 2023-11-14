@@ -3,8 +3,14 @@ export const returnSettings = (_typeData, name) => {
   let index = 0;
 
   _typeData.forEach((type, i) => {
-    if (type.strArea === name) {
+    if (type.strArea && type.strArea === name) {
       index = i + 1;
+      return;
+    }
+
+    if (type.strCategory && type.strCategory === name) {
+      index = i + 1;
+      return;
     }
   });
 
