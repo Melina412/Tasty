@@ -1,15 +1,31 @@
-.sliderHeader {
+.slider_header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 15px;
+  margin-top: 25px;
+}
+.slider_header h3 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.slider_header a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: var(--brand-secondary);
 }
 
 .btn_area {
   border-radius: 37px;
   background-color: #f1f5f5;
   padding: 9px 24px;
-  width: 85px !important;
+  width: 80% !important;
+  height: 40px;
   text-align: center;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .btn_area a .active {
   background-color: var(--brand-secondary);

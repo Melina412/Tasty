@@ -1,4 +1,10 @@
 .container {
-  width: 390px;
-  margin: 0 auto;
+  margin: 0px auto;
+}
+.header {
+  margin: 75px auto 20px auto;
+}
+.main {
+  width: 90%;
+  margin: 20px auto;
 }

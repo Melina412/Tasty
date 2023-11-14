@@ -5,16 +5,22 @@ import CategoriesSlider from "../components/sliders/CategoriesSlider";
 import MealOfTheDay from "../components/MealOfTheDay";
 import SearchBox from "../components/SearchBox";
 import styles from "./Home.module.css";
+import NavBar from "../components/NavBar";
 
 const Home = () => {
   return (
     <>
       <section className={styles.container}>
-        <SearchBox />
-        <MealOfTheDay />
-        <AreasSlider />
-        <CategoriesSlider />
-        <p></p>
+        <header className={styles.header}>
+          <SearchBox />
+        </header>
+        <main className={styles.main}>
+          <MealOfTheDay />
+          <AreasSlider />
+          <CategoriesSlider />
+        </main>
+        <footer></footer>
+        <NavBar />
       </section>
     </>
   );
