@@ -1,0 +1,16 @@
+.buttons {
+  /* padding: 10px 20px; */
+  width: 90px;
+  height: 40px;
+  background-color: #f1f5f5;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.buttons:hover,
+.buttons_active {
+  background-color: #70b9be;
+  color: white;
+}
