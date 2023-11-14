@@ -7,6 +7,7 @@ import Onboarding from "./pages/Onboarding";
 import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
+
 import Loadingscreen from "./pages/Loadingscreen";
 import List from "./components/List/List";
 

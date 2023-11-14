@@ -1,5 +1,7 @@
-import styles from "./List.module.css";
+
+import SearchResultCards from "../SearchResultCards/SearchResultCards";
 import CategoryAreaCards from "../CategoryAreaCards/CategoryAreaCards.jsx";
+import styles from "./List.module.css";
 
 const List = () => {
   return (
@@ -28,6 +30,15 @@ const List = () => {
         strMealThumb="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
         strMeal="Irgendeine Pasta"
       />
+    </section>
+
+    <section className={styles.search_result_list}>
+      <SearchResultCards
+        strMealThumb="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
+        strMeal="Irgendeine Pasta"
+        strCategory="Random Category"
+        idMeal="52771"
+   />
     </section>
   );
 };
