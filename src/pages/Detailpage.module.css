@@ -1,0 +1,50 @@
+.img {
+  height: 40%;
+  width: 100%;
+}
+
+.details {
+  border-radius: 50px 50px 0px 0px;
+  width: 100vw;
+}
+
+.details h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 40px auto 10px 25px;
+}
+
+.details h3 {
+  color: var(--text-gray);
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin: 0 auto 10px 25px;
+}
+
+.details h4 {
+  color: var(--text-gray);
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin: 0 auto 10px 25px;
+}
+
+.details div {
+  background-color: #e6ebf2;
+  padding: 3px 1px;
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+.details div button {
+  color: black;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 12px 30px;
+  width: 48%;
+  border: none;
+  border-radius: 15px;
+  margin: 3.3px;
+  background-color: transparent;
+}
