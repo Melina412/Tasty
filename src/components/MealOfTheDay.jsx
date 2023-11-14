@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import FetchAPI from "../functions/FetchAPI";
 const MealOfTheDay = () => {
   const [randomMeal, setRandomMeal] = useState();
@@ -27,17 +28,19 @@ const MealOfTheDay = () => {
   return (
     <>
       {randomMeal && (
-        <section className="random-meal">
-          <h3>Meal of the Day</h3>
-          <div className="mealcard">
-            <img src={randomMeal.mealImg} alt="" />
-            <h2>{randomMeal.mealName}</h2>
-            <div>
-              <p>{randomMeal.mealCategorie}</p>
-              <p>{randomMeal.mealArea}</p>
+        <Link to={`/detail/${randomMeal.mealId}`}>
+          <section className="random-meal">
+            <h3>Meal of the Day</h3>
+            <div className="mealcard">
+              <img src={randomMeal.mealImg} alt="" />
+              <h2>{randomMeal.mealName}</h2>
+              <div>
+                <p>{randomMeal.mealCategorie}</p>
+                <p>{randomMeal.mealArea}</p>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </Link>
       )}
     </>
   );
