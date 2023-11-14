@@ -1,18 +1,21 @@
+import { Link } from "react-router-dom";
 import styles from "./CategoryAreaCards.module.css";
 
 const CategoryAreaCards = (props) => {
   return (
     <article className={styles.card}>
-      <div className={styles.container}>
-        <div className={styles.imgContainer}>
-          <img
-            className={styles.image}
-            src={props.strMealThumb}
-            alt="meal image"
-          />
+      <Link className={styles.link} to={`/details/${props.item.idMeal}`}>
+        <div className={styles.container}>
+          <div className={styles.imgContainer}>
+            <img
+              className={styles.image}
+              src={props.item.strMealThumb}
+              alt="meal image"
+            />
+          </div>
+          <p className={styles.name}>{props.item.strMeal}</p>
         </div>
-        <p className={styles.name}>{props.strMeal}</p>
-      </div>
+      </Link>
     </article>
   );
 };

@@ -1,24 +1,24 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { Link, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { Link, useParams } from "react-router-dom";
 
 /* CSS */
-import styles from './SearchPage.module.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import styles from "./SearchPage.module.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-import { useEffect, useState } from 'react';
-import FetchAPI from '../functions/FetchAPI';
+import { useEffect, useState } from "react";
+import FetchAPI from "../functions/FetchAPI";
 
-import SearchButtonList from '../components/SearchButtonList';
-import Slider from 'react-slick';
-import SearchBox from '../components/SearchBox';
-import List from '../components/List/List';
+import SearchButtonList from "../components/SearchButtonList";
+import Slider from "react-slick";
+import SearchBox from "../components/SearchBox";
+import List from "../components/List/List";
 
 const settings = {
   rows: 1,
   slidesPerRow: 3,
-  centerPadding: '10px',
+  centerPadding: "10px",
   centerMode: true,
   infinite: true,
   speed: 500,
@@ -29,21 +29,25 @@ const settings = {
 const SearchPage = () => {
   const [currentData, setCurrentData] = useState([]);
   const [typeState, setTypeState] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
 
   const { type, name } = useParams();
 
   useEffect(() => {
-    let typeUrl = '';
-    let nameUrl = '';
+    let typeUrl = "";
+    let nameUrl = "";
     switch (type) {
-      case 'categories':
-        typeUrl = 'categories.php';
-        nameUrl = `filter.php?c=${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+      case "categories":
+        typeUrl = "categories.php";
+        nameUrl = `filter.php?c=${name.charAt(0).toUpperCase()}${name.slice(
+          1
+        )}`;
         break;
-      case 'areas':
-        typeUrl = 'list.php?a=list';
-        nameUrl = `filter.php?a=${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+      case "areas":
+        typeUrl = "list.php?a=list";
+        nameUrl = `filter.php?a=${name.charAt(0).toUpperCase()}${name.slice(
+          1
+        )}`;
         break;
 
       default:
@@ -53,10 +57,16 @@ const SearchPage = () => {
     async function fetchData(_typeUrl, _callback) {
       const response = await FetchAPI(_typeUrl);
 
-      _callback(response.categories ? response.categories : response.meals ? response.meals : []); // für category response.categories
+      _callback(
+        response.categories
+          ? response.categories
+          : response.meals
+          ? response.meals
+          : []
+      ); // für category response.categories
 
       // Wir fetchen daten insofern name != all
-      if (name !== 'all') {
+      if (name !== "all") {
         fetchDataByName(nameUrl, setCurrentData);
       }
     }
@@ -85,13 +95,16 @@ const SearchPage = () => {
           <h2>Search</h2>
         </article>
         {/* PLACEHOLDER SEARCHBOX!! BEGIN */}
-        <SearchBox onHandleSearchByType={handleSearchByType} searchInput={searchInput} />
+        <SearchBox
+          onHandleSearchByType={handleSearchByType}
+          searchInput={searchInput}
+        />
       </section>
 
       <section className={styles.content_section}>
         {typeState && typeState.length > 0 ? (
-          type === 'categories' ? (
-            name === 'all' ? (
+          type === "categories" ? (
+            name === "all" ? (
               <article className={styles.buttons_all}>
                 {typeState.map((ts) => {
                   return (
@@ -101,7 +114,9 @@ const SearchPage = () => {
                         .charAt(0)
                         .toLowerCase()}${ts.strCategory.slice(1)}`}
                       categoryName={ts.strCategory}
-                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(
+                        1
+                      )}`}
                     />
                   );
                 })}
@@ -117,24 +132,32 @@ const SearchPage = () => {
                           .charAt(0)
                           .toLowerCase()}${ts.strCategory.slice(1)}`}
                         categoryName={ts.strCategory}
-                        typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                        typeName={`${name.charAt(0).toUpperCase()}${name.slice(
+                          1
+                        )}`}
                       />
                     );
                   })}
                 </Slider>
-                {currentData && <List currentData={currentData} categories={null} />}
+                {currentData && (
+                  <List currentData={currentData} categories={null} />
+                )}
               </article>
             )
-          ) : type === 'areas' ? (
-            name === 'all' ? (
+          ) : type === "areas" ? (
+            name === "all" ? (
               <article className={styles.buttons_all}>
                 {typeState.map((ts) => {
                   return (
                     <SearchButtonList
                       key={ts.strArea}
-                      linkName={`areas/${ts.strArea.charAt(0).toLowerCase()}${ts.strArea.slice(1)}`}
+                      linkName={`areas/${ts.strArea
+                        .charAt(0)
+                        .toLowerCase()}${ts.strArea.slice(1)}`}
                       categoryName={ts.strArea}
-                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(
+                        1
+                      )}`}
                     />
                   );
                 })}
@@ -145,13 +168,19 @@ const SearchPage = () => {
                   return (
                     <SearchButtonList
                       key={crypto.randomUUID()}
-                      linkName={`areas/${ts.strArea.charAt(0).toLowerCase()}${ts.strArea.slice(1)}`}
+                      linkName={`areas/${ts.strArea
+                        .charAt(0)
+                        .toLowerCase()}${ts.strArea.slice(1)}`}
                       categoryName={ts.strArea}
-                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(
+                        1
+                      )}`}
                     />
                   );
                 })}
-                {currentData && <List currentData={currentData} categories={null} />}
+                {currentData && (
+                  <List currentData={currentData} categories={null} />
+                )}
               </article>
             )
           ) : (
