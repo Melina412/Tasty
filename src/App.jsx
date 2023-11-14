@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -7,9 +7,6 @@ import Onboarding from "./pages/Onboarding";
 import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
-import CategoryAreaCards from "./components/CategoryAreaCards";
-import CategoriesButtonList from "./components/CategoriesButtonList";
-import CategoryAreaList from "./components/CategoryAreaList";
 
 import Loadingscreen from "./pages/Loadingscreen";
 import List from "./components/List/List";

@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import FetchAPI from "../../functions/FetchAPI";
 
-import CategoriesButtonList from "../CategoriesButtonList";
-
 import Slider from "react-slick";
 
 // CSS

@@ -7,11 +7,11 @@
 .search_result_list {
   display: grid;
   grid-template-columns: 1fr;
-   gap: 16px;
+  gap: 16px;
   width: 375px;
   padding: 20px;
   margin: 0 auto;
-
+}
 .category_area_list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
