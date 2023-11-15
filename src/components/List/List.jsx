@@ -19,7 +19,9 @@ const List = ({ currentData, categories }) => {
                 key={index}
                 item={item}
                 categories={
-                  categories.charAt(0).toUpperCase() + categories.slice(1)
+                  categories === "home"
+                    ? item.strCategory
+                    : categories.charAt(0).toUpperCase() + categories.slice(1)
                 }
               />
             ) : (
