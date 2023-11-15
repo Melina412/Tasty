@@ -21,3 +21,16 @@
   font-size: 62.5%;
   font-family: Montserrat;
 }
+
+.dark {
+  background-color: rgb(29, 29, 29);
+  color: white;
+}
+
+.dark path {
+  stroke: white;
+}
+
+.dark circle {
+  stroke: white;
+}

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import NavBar from "../components/NavBar";
 import FetchAPI from "../functions/FetchAPI";
 
 import styles from "../pages/Detailpage.module.css";
+import "../App.css";
 
 const DetailPage = ({ children }) => {
   const [singleMeal, setSingleMeal] = useState();
@@ -48,10 +48,16 @@ const DetailPage = ({ children }) => {
             <h3>{singleMeal[0].strCategory}</h3>
             <h4>{singleMeal[0].strArea}</h4>
             <div>
-              <button onClick={toggleFunction}>Ingredients</button>
+              <button
+                className={toggle ? `${styles.black}` : null}
+                onClick={toggleFunction}
+              >
+                Ingredients
+              </button>
+
               <button
                 onClick={toggleFunction}
-                className={toggle ? styles.black : null}
+                className={toggle ? null : `${styles.black}`}
               >
                 Instructions
               </button>
