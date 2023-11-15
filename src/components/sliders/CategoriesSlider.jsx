@@ -6,12 +6,17 @@ import Slider from "react-slick";
 
 // CSS
 import styles from "./AreasSlider.module.css";
-import "./SliderStyle/slick.css";
-import "./SliderStyle/slickTheme.css";
-import { settings } from "./SliderStyle/sliderSetting";
+import c_styles from "./CategoriesSlider.module.css";
+// import "./SliderStyle/slick.css";
+// import "./SliderStyle/slickTheme.css";
+// import { settings } from "./SliderStyle/sliderSetting";
 
 const CategoriesSlider = () => {
   const [categorys, setCategorys] = useState([]);
+  const settings = {
+    slidesToShow: 2,
+    slidesToScroll: 1,
+  };
   useEffect(() => {
     async function fetchData() {
       try {
@@ -33,8 +38,8 @@ const CategoriesSlider = () => {
   }, []);
   return (
     <>
-      <section className="categorysSlider">
-        <div className={styles.sliderHeader}>
+      <section className={c_styles.categorysSlider}>
+        <div className={styles.slider_header}>
           <h3>Categories</h3>
           {categorys.length > 1 && (
             <Link to="/search/categories/all">See All</Link>
@@ -45,12 +50,14 @@ const CategoriesSlider = () => {
             {categorys.map((category, index) => (
               <div key={index}>
                 <Link
+                  className={c_styles.link_categorie}
                   to={`/categoryAreaList/categories/${category.categoryName}`}
                 >
-                  <div>
+                  <div className={c_styles.item_category}>
                     <img
                       src={category.categoryImg}
                       alt={category.categoryName}
+                      className={c_styles.img_category}
                     />
                     <h3>{category.categoryName}</h3>
                   </div>
