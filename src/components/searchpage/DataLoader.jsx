@@ -17,7 +17,7 @@ const DataLoader = ({ styles, loadingText }) => {
 };
 
 DataLoader.propTypes = {
-  styles: PropTypes.object,
+  styles: PropTypes.string,
   loadingText: PropTypes.string,
 };
 

@@ -36,7 +36,8 @@ button {
 }
 
 .main {
-  margin: 75px auto;
+  padding: 0 auto;
+  padding-top: 75px;
 }
 
 .content_section {
@@ -76,7 +77,7 @@ button {
 }
 
 .loading span:nth-child(1) {
-  animation: drop 2s ease-in-out infinite;
+  animation: drop 1s ease-in-out infinite;
 }
 
 .loading span:nth-child(2) {
@@ -119,12 +120,6 @@ button {
 .loading span:nth-child(10) {
   animation: drop 1s ease-in-out infinite;
   animation-delay: 0.9s;
-}
-
-.slick-next:before,
-.slick-prev:before {
-  font-size: 3rem !important;
-  color: lightgreen;
 }
 
 @keyframes drop {

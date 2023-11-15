@@ -1,17 +1,13 @@
-import SearchResultCards from "../SearchResultCards/SearchResultCards";
-import CategoryAreaCards from "../CategoryAreaCards/CategoryAreaCards.jsx";
-import styles from "./List.module.css";
+import SearchResultCards from '../SearchResultCards/SearchResultCards';
+import CategoryAreaCards from '../CategoryAreaCards/CategoryAreaCards.jsx';
+import styles from './List.module.css';
 
 const List = ({ currentData, categories }) => {
-  console.log({ currentData });
-  console.log({ categories });
   // # die Klasse der section muss noch vertauscht werden, wenn der categories wert da ist
   return (
     <>
       <section
-        className={
-          categories ? styles.search_result_list : styles.category_area_list
-        }
+        className={categories ? styles.search_result_list : styles.category_area_list}
         // className={
         //   categories ? styles.category_area_list : styles.search_result_list
         // }
