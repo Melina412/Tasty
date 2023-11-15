@@ -6,8 +6,8 @@ import { ThemeContext } from "../../context/Context";
 
 const SearchResultCards = (props) => {
   const { theme } = useContext(ThemeContext);
-  console.log({ theme });
-  console.log({ props });
+  // console.log({ theme });
+  // console.log({ props });
   return (
     <article className={`${styles.card} ${theme ? styles.dark : ""}`}>
       <div className={styles.container}>
