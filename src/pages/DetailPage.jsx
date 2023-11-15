@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import FetchAPI from "../functions/FetchAPI";
 
-import styles from '../pages/Detailpage.module.css';
+import styles from "../pages/Detailpage.module.css";
 
 const DetailPage = ({ children }) => {
   const [singleMeal, setSingleMeal] = useState();
@@ -21,7 +21,7 @@ const DetailPage = ({ children }) => {
           setSingleMeal(response.meals);
         }
       } catch (err) {
-        console.error('Fehler beim Laden der Daten:', err);
+        console.error("Fehler beim Laden der Daten:", err);
       }
     }
     fetchData();
@@ -49,7 +49,10 @@ const DetailPage = ({ children }) => {
             <h4>{singleMeal[0].strArea}</h4>
             <div>
               <button onClick={toggleFunction}>Ingredients</button>
-              <button onClick={toggleFunction} className={toggle ? 'black' : null}>
+              <button
+                onClick={toggleFunction}
+                className={toggle ? styles.black : null}
+              >
                 Instructions
               </button>
             </div>
