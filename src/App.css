@@ -12,6 +12,7 @@
   --neutral-gray1: #48525f;
   --dark: #0a2533;
   --text-gray: #97a2b0;
+  --neutral-grey-2: #97a2b0;
 }
 
 * {
@@ -19,5 +20,5 @@
   padding: 0;
   box-sizing: border-box;
   font-size: 62.5%;
-  font-family: Montserrat;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
