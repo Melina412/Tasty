@@ -1,0 +1,15 @@
+.item_category {
+  margin: 15px;
+}
+.img_category {
+  width: 170px;
+}
+.item_category h3 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 15px;
+}
+.link_categorie {
+  text-decoration: none;
+  color: var(--dark);
+}

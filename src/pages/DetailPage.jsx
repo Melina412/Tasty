@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import FetchAPI from "../functions/FetchAPI";
 
-import styles from "../pages/Detailpage.module.css";
+import styles from '../pages/Detailpage.module.css';
 
-const DetailPage = () => {
+const DetailPage = ({ children }) => {
   const [singleMeal, setSingleMeal] = useState();
 
   // - für die id vom Meal of the Day
@@ -21,7 +21,7 @@ const DetailPage = () => {
           setSingleMeal(response.meals);
         }
       } catch (err) {
-        console.error("Fehler beim Laden der Daten:", err);
+        console.error('Fehler beim Laden der Daten:', err);
       }
     }
     fetchData();
@@ -49,10 +49,7 @@ const DetailPage = () => {
             <h4>{singleMeal[0].strArea}</h4>
             <div>
               <button onClick={toggleFunction}>Ingredients</button>
-              <button
-                onClick={toggleFunction}
-                className={toggle ? "black" : null}
-              >
+              <button onClick={toggleFunction} className={toggle ? 'black' : null}>
                 Instructions
               </button>
             </div>
@@ -119,7 +116,7 @@ const DetailPage = () => {
             </article>
           )}
 
-          <NavBar />
+          {children}
         </section>
       ) : (
         <h1 className={`${styles.loading}`}>Loading...</h1>

@@ -9,10 +9,14 @@ import Slider from "react-slick";
 import styles from "./AreasSlider.module.css";
 // import "./SliderStyle/slick.css";
 // import "./SliderStyle/slickTheme.css";
-import { settings } from "./SliderStyle/sliderSetting";
+// import { settings } from "./SliderStyle/sliderSetting";
 
 const AreasSlider = () => {
   const [areas, setAreas] = useState([]);
+  const settings = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  };
   useEffect(() => {
     async function fetchData() {
       try {
@@ -36,7 +40,7 @@ const AreasSlider = () => {
   return (
     <>
       <section className={styles.areasSlider}>
-        <div className={styles.sliderHeader}>
+        <div className={styles.slider_header}>
           <h3>Areas</h3>
           {areas.length > 1 && <Link to="/search/areas/all">See All</Link>}
         </div>
