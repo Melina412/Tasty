@@ -32,6 +32,7 @@ const SearchPage = ({ children }) => {
   const sliderRef = useRef();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setCurrentData(null);
     let typeUrl = '';
     let nameUrl = '';
