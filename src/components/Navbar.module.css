@@ -14,6 +14,18 @@
   background-color: transparent;
 }
 
-.active {
-  fill: aqua;
+.active path:first-of-type {
+  fill: #70b9be;
+}
+
+.active path:last-of-type {
+  stroke: #fff;
+}
+
+.active_glass circle {
+  fill: #70b9be;
+}
+
+.active_profile path {
+  fill: #70b9be;
 }
