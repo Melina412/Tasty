@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Ingredients from "../components/Ingredients";
-import Instructions from "../components/Instructions";
 import NavBar from "../components/NavBar";
 import FetchAPI from "../functions/FetchAPI";
 

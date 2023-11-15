@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from "../components/Navbar.module.css";
+import { useContext } from "react";
+import { ThemeContext } from "../context/Context";
 
 const NavBar = () => {
   return (
