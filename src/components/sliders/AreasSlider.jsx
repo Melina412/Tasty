@@ -11,52 +11,40 @@ import styles from "./AreasSlider.module.css";
 // import "./SliderStyle/slickTheme.css";
 // import { settings } from "./SliderStyle/sliderSetting";
 
-const AreasSlider = () => {
-  const [areas, setAreas] = useState([]);
+const AreasSlider = (props) => {
+  // const [areas, setAreas] = useState([]);
   const settings = {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        // You can await here
-        const response = await FetchAPI("list.php?a=list");
 
-        if (response && response.meals) {
-          const areasItem = response.meals.map((area) => ({
-            description: area.strArea,
-          }));
-          setAreas(areasItem);
-        }
-      } catch (err) {
-        console.error("Fehler beim Laden der Daten:", err);
-      }
-    }
-    fetchData();
-  }, []);
-  console.log("Von AreasSlider==>", areas);
+  console.log("Von AreasSlider==>", props.areas);
 
   return (
     <>
       <section className={styles.areasSlider}>
         <div className={styles.slider_header}>
           <h3>Areas</h3>
-          {areas.length > 1 && <Link to="/search/areas/all">See All</Link>}
+          {props.areas.length > 1 && (
+            <Link to="/search/areas/all">See All</Link>
+          )}
         </div>
-        {areas.length > 0 && (
+        {props.areas.length > 0 && (
           <Slider {...settings}>
-            {areas.map((area, index) => (
-              <div
-                key={index}
-                className={`${styles.btn_area} ${
-                  index === 0 ? styles.firstArea : ""
-                }`}
+            {props.areas.map((area, index) => (
+              <Link
+                to={`/search/areas/${area.description.toLowerCase()}`}
+                className={styles.area_link}
               >
-                <Link to={`/search/areas/${area.description.toLowerCase()}`}>
+                <button
+                  key={index}
+                  className={`${styles.btn_area} ${
+                    index === 0 ? styles.firstArea : ""
+                  }`}
+                >
                   {area.description}
-                </Link>
-              </div>
+                </button>
+              </Link>
             ))}
           </Slider>
         )}

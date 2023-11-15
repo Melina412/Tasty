@@ -11,47 +11,47 @@ import c_styles from "./CategoriesSlider.module.css";
 // import "./SliderStyle/slickTheme.css";
 // import { settings } from "./SliderStyle/sliderSetting";
 
-const CategoriesSlider = () => {
-  const [categorys, setCategorys] = useState([]);
+const CategoriesSlider = (props) => {
+  // const [categorys, setCategorys] = useState([]);
   const settings = {
     slidesToShow: 2,
     slidesToScroll: 1,
   };
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await FetchAPI("categories.php");
-        if (response && response.categories) {
-          const categorysItem = response.categories.map((category) => ({
-            categoryId: category.idCategory,
-            categoryName: category.strCategory,
-            categoryImg: category.strCategoryThumb,
-            categoryDescription: category.strCategoryDescription,
-          }));
-          setCategorys(categorysItem);
-        }
-      } catch (err) {
-        console.error("Fehler beim Laden der Daten:", err);
-      }
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await FetchAPI("categories.php");
+  //       if (response && response.categories) {
+  //         const categorysItem = response.categories.map((category) => ({
+  //           categoryId: category.idCategory,
+  //           categoryName: category.strCategory,
+  //           categoryImg: category.strCategoryThumb,
+  //           categoryDescription: category.strCategoryDescription,
+  //         }));
+  //         setCategorys(categorysItem);
+  //       }
+  //     } catch (err) {
+  //       console.error("Fehler beim Laden der Daten:", err);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
   return (
     <>
       <section className={c_styles.categorysSlider}>
         <div className={styles.slider_header}>
           <h3>Categories</h3>
-          {categorys.length > 1 && (
+          {props.categorys.length > 1 && (
             <Link to="/search/categories/all">See All</Link>
           )}
         </div>
-        {categorys.length > 0 && (
+        {props.categorys.length > 0 && (
           <Slider {...settings}>
-            {categorys.map((category, index) => (
+            {props.categorys.map((category, index) => (
               <div key={index}>
                 <Link
                   className={c_styles.link_categorie}
-                  to={`/categoryAreaList/categories/${category.categoryName}`}
+                  to={`/search/categories/${category.categoryName}`}
                 >
                   <div className={c_styles.item_category}>
                     <img

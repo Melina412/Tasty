@@ -16,22 +16,24 @@
 }
 
 .btn_area {
-  border-radius: 37px;
+  border-radius: 25px;
+  border: none;
   background-color: #f1f5f5;
-  padding: 9px 24px;
-  width: 100%;
-
+  width: 90px;
+  height: 40px;
   text-align: center;
   margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .btn_area a .active {
   background-color: var(--brand-secondary);
 }
 
-.btn_area a {
+.area_link {
+  width: 90px !important;
   text-decoration: none;
   color: var(--dark);
 }
