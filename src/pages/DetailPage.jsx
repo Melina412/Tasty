@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import NavBar from "../components/NavBar";
 import FetchAPI from "../functions/FetchAPI";
+import { FavoriteContext } from "../context/Context";
 
 import styles from "../pages/Detailpage.module.css";
 
 const DetailPage = ({ children }) => {
   const [singleMeal, setSingleMeal] = useState();
+  const { favorite, setFavorite } = useContext(FavoriteContext);
 
   // - für die id vom Meal of the Day
   const idParams = useParams();
@@ -27,11 +28,26 @@ const DetailPage = ({ children }) => {
     fetchData();
   }, []);
 
+  const ifchecked = favorite.some((item) => item.idMeal === id);
+
+  console.log(singleMeal);
+
   const [toggle, setToggle] = useState(true);
 
   const toggleFunction = () => {
     setToggle((toggle) => !toggle);
   };
+
+  const handleSetFavorites = () => {
+    favorite.some((item) => item.idMeal === id)
+      ? setFavorite((currentFavorites) =>
+          currentFavorites.filter((cur) => cur.idMeal !== singleMeal[0].idMeal)
+        )
+      : setFavorite((currentFavorites) => [...currentFavorites, singleMeal[0]]);
+  };
+
+  // console.log("favorite " + favorite);
+  // console.log(singleMeal);
 
   return (
     <>
@@ -47,11 +63,23 @@ const DetailPage = ({ children }) => {
             <h1>{singleMeal[0].strMeal}</h1>
             <h3>{singleMeal[0].strCategory}</h3>
             <h4>{singleMeal[0].strArea}</h4>
+            <input
+              onClick={handleSetFavorites}
+              type="checkbox"
+              name="favorite"
+              defaultChecked={ifchecked}
+            />
             <div>
-              <button onClick={toggleFunction}>Ingredients</button>
+              <button
+                className={toggle ? `${styles.black}` : null}
+                onClick={toggleFunction}
+              >
+                Ingredients
+              </button>
+
               <button
                 onClick={toggleFunction}
-                className={toggle ? styles.black : null}
+                className={toggle ? null : `${styles.black}`}
               >
                 Instructions
               </button>

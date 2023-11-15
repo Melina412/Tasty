@@ -22,3 +22,16 @@
   font-size: 62.5%;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
+
+.dark {
+  background-color: var(--neutral-dark);
+  color: white;
+}
+
+.dark path {
+  stroke: white;
+}
+
+.dark circle {
+  stroke: white;
+}

@@ -1,9 +1,11 @@
 const Profile = ({ children }) => {
   return (
-    <main>
-      <h1 style={{ fontSize: '3rem' }}>PROFIL!!</h1>
-      {children}
-    </main>
+    <>
+      <main>
+        <h1 style={{ fontSize: "3rem" }}>PROFIL!!</h1>
+        {children}
+      </main>
+    </>
   );
 };
 
