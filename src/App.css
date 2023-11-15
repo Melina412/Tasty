@@ -13,7 +13,11 @@
   --dark: #0a2533;
   --text-gray: #97a2b0;
   --neutral-grey-2: #97a2b0;
-  --border-lightmode: #fbfbfb;
+
+  --border-lightmode: 1px solid #fbfbfb;
+  --border-darkmode: 1px solid rgba(111, 185, 190, 0.1);
+  --shadow-lightmode: 0px 2px 16px 0px rgba(6, 51, 54, 0.1);
+  --shadow-darkmode: 0px 2px 16px 0px rgba(111, 185, 190, 0.2);
 }
 
 * {

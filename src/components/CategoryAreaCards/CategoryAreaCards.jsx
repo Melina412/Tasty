@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import styles from "./CategoryAreaCards.module.css";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/Context";
 
 const CategoryAreaCards = (props) => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <article className={styles.card}>
+    <article className={`${styles.card} ${theme ? styles.dark : ""}`}>
       <Link className={styles.link} to={`/detail/${props.item.idMeal}`}>
         <div className={styles.container}>
           <div className={styles.imgContainer}>
