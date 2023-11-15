@@ -20,7 +20,7 @@ const SearchResultCards = (props) => {
             <div className={styles.meal_container}>
               <p className={styles.name}>{props.strMeal}</p>
               <div className={styles.category}>
-                <img src="/public/circle.svg" alt="icon" />
+                <img src="/circle.svg" alt="icon" />
                 <p>{props.item.strCategory}</p>
               </div>
             </div>
@@ -29,7 +29,7 @@ const SearchResultCards = (props) => {
             <div>
               <Link to={`/details/${props.item.idMeal}`}>
                 <button className={styles.button}>
-                  <img src="/public/arrow-white.svg" alt="link to meal" />
+                  <img src="/arrow-white.svg" alt="link to meal" />
                 </button>
               </Link>
             </div>
