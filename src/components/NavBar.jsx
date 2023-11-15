@@ -1,7 +1,10 @@
+import { NavLink } from "react-router-dom";
+import styles from "../components/Navbar.module.css";
+import { useContext } from "react";
+import { ThemeContext } from "../context/Context";
+
 import PropTypes from 'prop-types';
 
-import { NavLink } from 'react-router-dom';
-import styles from '../components/Navbar.module.css';
 import HomeIcon from './navbar/HomeIcon';
 import GlassIcon from './navbar/GlassIcon';
 import FavoriteIcon from './navbar/FavoriteIcon';
@@ -24,7 +27,7 @@ const NavBar = ({ activeName }) => {
           <ProfileIcon activeName={activeName} active={styles.active_profile} />
         </NavLink>
         <button>
-          <img src="../../public/img/darkmode.png" alt="Darkmode" />
+          <img src="/img/darkmode.png" alt="Darkmode" />
         </button>
       </div>
     </>
