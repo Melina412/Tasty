@@ -32,6 +32,7 @@ const SearchPage = ({ children }) => {
   const sliderRef = useRef();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setCurrentData(null);
     let typeUrl = '';
     let nameUrl = '';
@@ -82,17 +83,24 @@ const SearchPage = ({ children }) => {
     tempData = response;
   }
 
-  const handleSearchByType = (_val) => {
+  const handleSearchByType = async (_val) => {
     setSearchInput(_val);
+
     if (_val) {
-      const filteredResult = {
-        meals: currentData.meals?.filter((item) =>
-          item.strMeal.startsWith(_val.charAt(0).toUpperCase() + _val.slice(1))
-        ),
-      };
-      setCurrentData(filteredResult);
+      if (name !== 'all') {
+        const filteredResult = {
+          meals: tempData.meals?.filter((item) =>
+            item.strMeal.startsWith(_val.charAt(0).toUpperCase() + _val.slice(1))
+          ),
+        };
+
+        setCurrentData(filteredResult);
+      } else {
+        const filteredResult = await FetchAPI(`/search.php?s=${_val}`);
+        setCurrentData(filteredResult);
+      }
     } else {
-      setCurrentData(tempData);
+      name !== 'all' ? setCurrentData(tempData) : setCurrentData([]);
     }
   };
 
@@ -112,28 +120,38 @@ const SearchPage = ({ children }) => {
         {typeState && typeState.length > 0 ? (
           type === 'categories' ? (
             name === 'all' ? (
-              <article className={styles.buttons_all}>
-                {typeState.map((ts) => {
-                  return (
-                    <SearchButtonList
-                      key={ts.idCategory}
-                      linkName={`categories/${ts.strCategory
-                        .charAt(0)
-                        .toLowerCase()}${ts.strCategory.slice(1)}`}
-                      categoryName={ts.strCategory}
-                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
-                    />
-                  );
-                })}
-              </article>
+              <>
+                {currentData && currentData?.meals?.length > 0 && (
+                  <List currentData={currentData} categories={null} />
+                )}
+                <article className={styles.buttons_all}>
+                  {typeState?.map((ts) => {
+                    return (
+                      <SearchButtonList
+                        key={ts.idCategory}
+                        linkName={`categories/${ts.strCategory
+                          .charAt(0)
+                          .toLowerCase()}${ts.strCategory.slice(1)}`}
+                        categoryName={ts.strCategory}
+                        typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                        setSearchInput={setSearchInput}
+                      />
+                    );
+                  })}
+                </article>
+              </>
             ) : (
               <article className={styles.article_section}>
-                <Link className={styles.see_all} to="/search/categories/all">
+                <Link
+                  className={styles.see_all}
+                  to="/search/categories/all"
+                  onClick={() => setSearchInput('')}
+                >
                   See All
                 </Link>
                 {settings && (
                   <Slider {...settings} className={styles.buttons_named} ref={sliderRef}>
-                    {typeState.map((ts) => {
+                    {typeState?.map((ts) => {
                       return (
                         <SearchButtonList
                           key={ts.idCategory}
@@ -142,6 +160,7 @@ const SearchPage = ({ children }) => {
                             .toLowerCase()}${ts.strCategory.slice(1)}`}
                           categoryName={ts.strCategory}
                           typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                          setSearchInput={setSearchInput}
                         />
                       );
                     })}
@@ -160,26 +179,38 @@ const SearchPage = ({ children }) => {
             )
           ) : type === 'areas' ? (
             name === 'all' ? (
-              <article className={styles.buttons_all}>
-                {typeState.map((ts) => {
-                  return (
-                    <SearchButtonList
-                      key={ts.strArea}
-                      linkName={`areas/${ts.strArea.charAt(0).toLowerCase()}${ts.strArea.slice(1)}`}
-                      categoryName={ts.strArea}
-                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
-                    />
-                  );
-                })}
-              </article>
+              <>
+                {currentData && currentData?.meals?.length > 0 && (
+                  <List currentData={currentData} categories={null} />
+                )}
+                <article className={styles.buttons_all}>
+                  {typeState?.map((ts) => {
+                    return (
+                      <SearchButtonList
+                        key={ts.strArea}
+                        linkName={`areas/${ts.strArea.charAt(0).toLowerCase()}${ts.strArea.slice(
+                          1
+                        )}`}
+                        categoryName={ts.strArea}
+                        typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                        setSearchInput={setSearchInput}
+                      />
+                    );
+                  })}
+                </article>
+              </>
             ) : (
               <article className={styles.article_section}>
-                <Link className={styles.see_all} to="/search/areas/all">
+                <Link
+                  className={styles.see_all}
+                  to="/search/areas/all"
+                  onClick={() => setSearchInput('')}
+                >
                   See All
                 </Link>
                 (
                 <Slider {...settings} className={styles.buttons_named} ref={sliderRef}>
-                  {typeState.map((ts) => {
+                  {typeState?.map((ts) => {
                     return (
                       <SearchButtonList
                         key={crypto.randomUUID()}
@@ -188,6 +219,7 @@ const SearchPage = ({ children }) => {
                         )}`}
                         categoryName={ts.strArea}
                         typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
+                        setSearchInput={setSearchInput}
                       />
                     );
                   })}
