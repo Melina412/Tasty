@@ -3,14 +3,20 @@ import styles from "../components/Navbar.module.css";
 import { useContext } from "react";
 import { ThemeContext } from "../context/Context";
 
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import HomeIcon from './navbar/HomeIcon';
-import GlassIcon from './navbar/GlassIcon';
-import FavoriteIcon from './navbar/FavoriteIcon';
-import ProfileIcon from './navbar/ProfileIcon';
+import HomeIcon from "./navbar/HomeIcon";
+import GlassIcon from "./navbar/GlassIcon";
+import FavoriteIcon from "./navbar/FavoriteIcon";
+import ProfileIcon from "./navbar/ProfileIcon";
 
 const NavBar = ({ activeName }) => {
+  const { setTheme } = useContext(ThemeContext);
+
+  const toggleDarkmode = () => {
+    setTheme((mode) => !mode);
+  };
+
   return (
     <>
       <div className={`${styles.navbar}`}>
@@ -26,7 +32,7 @@ const NavBar = ({ activeName }) => {
         <NavLink to="/profile">
           <ProfileIcon activeName={activeName} active={styles.active_profile} />
         </NavLink>
-        <button>
+        <button onClick={toggleDarkmode}>
           <img src="/img/darkmode.png" alt="Darkmode" />
         </button>
       </div>

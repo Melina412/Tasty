@@ -40,7 +40,6 @@
 }
 
 .details div button {
-  color: black;
   font-size: 1.6rem;
   font-weight: 600;
   padding: 12px 30px;
@@ -48,13 +47,17 @@
   border: none;
   border-radius: 15px;
   margin: 3.3px;
-  background-color: transparent;
+}
+
+.details input {
+  width: 30px;
+  height: 30px;
 }
 
 /* --- Instructions */
 
 .instructions {
-  margin-bottom: 25%;
+  padding-bottom: 25%;
 }
 
 .instructions h2 {
@@ -97,7 +100,7 @@
 /* --- Ingredients */
 
 .ingredients {
-  margin-bottom: 25%;
+  padding-bottom: 25%;
 }
 
 .ingredients h2 {
@@ -107,7 +110,7 @@
 
 .ingredients p {
   font-weight: 700;
-  color: black;
+
   font-size: 1.6rem;
   line-height: 145%;
   margin: 0 60px 10px 25px;
@@ -130,6 +133,7 @@
 
 .black {
   background-color: black;
+  color: white;
 }
 
 @media only screen and (min-width: 768px) {
