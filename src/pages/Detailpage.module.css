@@ -49,6 +49,11 @@
   margin: 3.3px;
 }
 
+.details input {
+  width: 30px;
+  height: 30px;
+}
+
 /* --- Instructions */
 
 .instructions {
