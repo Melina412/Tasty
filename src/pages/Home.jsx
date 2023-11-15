@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import FetchAPI from "../functions/FetchAPI";
-import AreasSlider from "../components/sliders/AreasSlider";
-import CategoriesSlider from "../components/sliders/CategoriesSlider";
-import MealOfTheDay from "../components/MealOfTheDay";
-import SearchBox from "../components/SearchBox";
-import styles from "./Home.module.css";
+import { useEffect, useState } from 'react';
+import FetchAPI from '../functions/FetchAPI';
+import AreasSlider from '../components/sliders/AreasSlider';
+import CategoriesSlider from '../components/sliders/CategoriesSlider';
+import MealOfTheDay from '../components/MealOfTheDay';
+import SearchBox from '../components/SearchBox';
+import styles from './Home.module.css';
 
-const Home = () => {
+const Home = ({ children }) => {
   return (
     <>
       <section className={styles.container}>
@@ -15,6 +15,7 @@ const Home = () => {
         <AreasSlider />
         <CategoriesSlider />
         <p></p>
+        {children}
       </section>
     </>
   );

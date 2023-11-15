@@ -1,50 +1,48 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Link, useParams } from "react-router-dom";
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link, useParams } from 'react-router-dom';
 
 /* CSS */
-import styles from "./SearchPage.module.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import styles from './SearchPage.module.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-import { useEffect, useRef, useState } from "react";
-import FetchAPI from "../functions/FetchAPI";
+import { useEffect, useRef, useState } from 'react';
+import FetchAPI from '../functions/FetchAPI';
 
-import SearchButtonList from "../components/SearchButtonList";
-import Slider from "react-slick";
-import SearchBox from "../components/SearchBox";
-import List from "../components/List/List";
-import NavBar from "../components/NavBar";
-import { returnSettings } from "../functions/setSliderSettings";
+import SearchButtonList from '../components/SearchButtonList';
+import Slider from 'react-slick';
+import SearchBox from '../components/SearchBox';
+import List from '../components/List/List';
+import { returnSettings } from '../functions/setSliderSettings';
+import DataLoader from '../components/searchpage/DataLoader';
 
 let settings = null;
 
 let tempData = null;
 
-const SearchPage = () => {
-  const [currentData, setCurrentData] = useState([]);
+const SearchPage = ({ children }) => {
+  const [currentData, setCurrentData] = useState(null);
   const [typeState, setTypeState] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState('');
 
   const { type, name } = useParams();
 
   const sliderRef = useRef();
 
   useEffect(() => {
-    let typeUrl = "";
-    let nameUrl = "";
+    setCurrentData(null);
+    let typeUrl = '';
+    let nameUrl = '';
     switch (type) {
-      case "categories":
-        typeUrl = "categories.php";
-        nameUrl = `filter.php?c=${name.charAt(0).toUpperCase()}${name.slice(
-          1
-        )}`;
+      case 'categories':
+        typeUrl = 'categories.php';
+        nameUrl = `filter.php?c=${name.charAt(0).toUpperCase()}${name.slice(1)}`;
         break;
-      case "areas":
-        typeUrl = "list.php?a=list";
-        nameUrl = `filter.php?a=${name.charAt(0).toUpperCase()}${name.slice(
-          1
-        )}`;
+      case 'areas':
+        typeUrl = 'list.php?a=list';
+        nameUrl = `filter.php?a=${name.charAt(0).toUpperCase()}${name.slice(1)}`;
         break;
 
       default:
@@ -54,20 +52,14 @@ const SearchPage = () => {
     async function fetchData(_typeUrl, _callback) {
       const response = await FetchAPI(_typeUrl);
 
-      _callback(
-        response.categories
-          ? response.categories
-          : response.meals
-          ? response.meals
-          : []
-      ); // für category response.categories
+      _callback(response.categories ? response.categories : response.meals ? response.meals : []); // für category response.categories
 
       // slider settings
       settings = returnSettings(
         response.categories
-          ? response.categories
+          ? response.categories.map((val) => val.strCategory)
           : response.meals
-          ? response.meals
+          ? response.meals.map((val) => val.strArea)
           : [],
         name
       );
@@ -75,7 +67,7 @@ const SearchPage = () => {
       sliderRef.current && sliderRef.current.slickGoTo(settings.initialSlide);
 
       // Wir fetchen daten insofern name != all
-      if (name !== "all") {
+      if (name !== 'all') {
         fetchDataByName(nameUrl, setCurrentData);
       }
     }
@@ -113,16 +105,13 @@ const SearchPage = () => {
           </Link>
           <h2 className={styles.h2}>Search</h2>
         </article>
-        <SearchBox
-          onHandleSearchByType={handleSearchByType}
-          searchInput={searchInput}
-        />
+        <SearchBox onHandleSearchByType={handleSearchByType} searchInput={searchInput} />
       </section>
 
       <section className={styles.content_section}>
         {typeState && typeState.length > 0 ? (
-          type === "categories" ? (
-            name === "all" ? (
+          type === 'categories' ? (
+            name === 'all' ? (
               <article className={styles.buttons_all}>
                 {typeState.map((ts) => {
                   return (
@@ -132,9 +121,7 @@ const SearchPage = () => {
                         .charAt(0)
                         .toLowerCase()}${ts.strCategory.slice(1)}`}
                       categoryName={ts.strCategory}
-                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(
-                        1
-                      )}`}
+                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
                     />
                   );
                 })}
@@ -145,11 +132,7 @@ const SearchPage = () => {
                   See All
                 </Link>
                 {settings && (
-                  <Slider
-                    {...settings}
-                    className={styles.buttons_named}
-                    ref={sliderRef}
-                  >
+                  <Slider {...settings} className={styles.buttons_named} ref={sliderRef}>
                     {typeState.map((ts) => {
                       return (
                         <SearchButtonList
@@ -158,9 +141,7 @@ const SearchPage = () => {
                             .charAt(0)
                             .toLowerCase()}${ts.strCategory.slice(1)}`}
                           categoryName={ts.strCategory}
-                          typeName={`${name
-                            .charAt(0)
-                            .toUpperCase()}${name.slice(1)}`}
+                          typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
                         />
                       );
                     })}
@@ -173,24 +154,20 @@ const SearchPage = () => {
                     <List currentData={currentData} categories={null} />
                   )
                 ) : (
-                  <p>Loading...</p>
+                  <DataLoader styles={styles.loading} loadingText="LOADING...." />
                 )}
               </article>
             )
-          ) : type === "areas" ? (
-            name === "all" ? (
+          ) : type === 'areas' ? (
+            name === 'all' ? (
               <article className={styles.buttons_all}>
                 {typeState.map((ts) => {
                   return (
                     <SearchButtonList
                       key={ts.strArea}
-                      linkName={`areas/${ts.strArea
-                        .charAt(0)
-                        .toLowerCase()}${ts.strArea.slice(1)}`}
+                      linkName={`areas/${ts.strArea.charAt(0).toLowerCase()}${ts.strArea.slice(1)}`}
                       categoryName={ts.strArea}
-                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(
-                        1
-                      )}`}
+                      typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
                     />
                   );
                 })}
@@ -201,22 +178,16 @@ const SearchPage = () => {
                   See All
                 </Link>
                 (
-                <Slider
-                  {...settings}
-                  className={styles.buttons_named}
-                  ref={sliderRef}
-                >
+                <Slider {...settings} className={styles.buttons_named} ref={sliderRef}>
                   {typeState.map((ts) => {
                     return (
                       <SearchButtonList
                         key={crypto.randomUUID()}
-                        linkName={`areas/${ts.strArea
-                          .charAt(0)
-                          .toLowerCase()}${ts.strArea.slice(1)}`}
-                        categoryName={ts.strArea}
-                        typeName={`${name.charAt(0).toUpperCase()}${name.slice(
+                        linkName={`areas/${ts.strArea.charAt(0).toLowerCase()}${ts.strArea.slice(
                           1
                         )}`}
+                        categoryName={ts.strArea}
+                        typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
                       />
                     );
                   })}
@@ -229,7 +200,7 @@ const SearchPage = () => {
                     <List currentData={currentData} categories={null} />
                   )
                 ) : (
-                  <p>Loading...</p>
+                  <DataLoader styles={styles.loading} loadingText="LOADING...." />
                 )}
               </article>
             )
@@ -237,12 +208,16 @@ const SearchPage = () => {
             <p>No Type available!!</p>
           )
         ) : (
-          <p>LOADING...</p>
+          <DataLoader styles={styles.loading} loadingText="LOADING...." />
         )}
       </section>
-      <NavBar />
+      {children}
     </main>
   );
+};
+
+SearchPage.propTypes = {
+  children: PropTypes.object,
 };
 
 export default SearchPage;
