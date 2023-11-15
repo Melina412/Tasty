@@ -3,15 +3,9 @@ import CategoryAreaCards from '../CategoryAreaCards/CategoryAreaCards.jsx';
 import styles from './List.module.css';
 
 const List = ({ currentData, categories }) => {
-  console.log({ currentData });
-  console.log({ categories });
   return (
     <>
-      <section
-        className={
-          categories ? styles.search_result_list : styles.category_area_list
-        }
-      >
+      <section className={categories ? styles.search_result_list : styles.category_area_list}>
         {currentData.meals && currentData.meals.length > 0 ? (
           currentData.meals.map((item, index) =>
             categories ? (
@@ -19,7 +13,7 @@ const List = ({ currentData, categories }) => {
                 key={index}
                 item={item}
                 categories={
-                  categories === "home"
+                  categories === 'home' || categories === 'areas'
                     ? item.strCategory
                     : categories.charAt(0).toUpperCase() + categories.slice(1)
                 }

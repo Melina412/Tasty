@@ -8,7 +8,7 @@ import styles from './SearchPage.module.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import FetchAPI from '../functions/FetchAPI';
 
 import SearchButtonList from '../components/SearchButtonList';
@@ -26,6 +26,7 @@ const SearchPage = ({ children }) => {
   const [currentData, setCurrentData] = useState(null);
   const [typeState, setTypeState] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [force, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const { type, name } = useParams();
 
@@ -75,7 +76,7 @@ const SearchPage = ({ children }) => {
 
     // Wir fetchen den type => categories oder areas
     fetchData(typeUrl, setTypeState);
-  }, [type, name]);
+  }, [type, name, force]);
 
   async function fetchDataByName(_typeUrl, _callback) {
     const response = await FetchAPI(_typeUrl);
@@ -88,11 +89,27 @@ const SearchPage = ({ children }) => {
 
     if (_val) {
       if (name !== 'all') {
-        const filteredResult = {
+        let filteredResult = {
           meals: tempData.meals?.filter((item) =>
             item.strMeal.startsWith(_val.charAt(0).toUpperCase() + _val.slice(1))
           ),
         };
+
+        if (type === 'areas') {
+          setCurrentData([]);
+
+          await filteredResult.meals.forEach(async (fil) => {
+            let tempData = await FetchAPI(`/search.php?s=${fil.strMeal}`);
+
+            for (const value of tempData.meals) {
+              if (value.strArea === `${name.charAt(0).toUpperCase()}${name.slice(1)}`) {
+                setCurrentData((cur) => [...cur, value]);
+              }
+            }
+          });
+
+          return;
+        }
 
         setCurrentData(filteredResult);
       } else {
@@ -135,6 +152,7 @@ const SearchPage = ({ children }) => {
                         categoryName={ts.strCategory}
                         typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
                         setSearchInput={setSearchInput}
+                        setForceUpdate={forceUpdate}
                       />
                     );
                   })}
@@ -161,6 +179,7 @@ const SearchPage = ({ children }) => {
                           categoryName={ts.strCategory}
                           typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
                           setSearchInput={setSearchInput}
+                          setForceUpdate={forceUpdate}
                         />
                       );
                     })}
@@ -194,6 +213,7 @@ const SearchPage = ({ children }) => {
                         categoryName={ts.strArea}
                         typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
                         setSearchInput={setSearchInput}
+                        setForceUpdate={forceUpdate}
                       />
                     );
                   })}
@@ -220,6 +240,7 @@ const SearchPage = ({ children }) => {
                         categoryName={ts.strArea}
                         typeName={`${name.charAt(0).toUpperCase()}${name.slice(1)}`}
                         setSearchInput={setSearchInput}
+                        setForceUpdate={forceUpdate}
                       />
                     );
                   })}
@@ -227,7 +248,7 @@ const SearchPage = ({ children }) => {
                 )
                 {currentData ? (
                   searchInput.length > 0 ? (
-                    <List currentData={currentData} categories={name} />
+                    <List currentData={{ meals: currentData }} categories="areas" />
                   ) : (
                     <List currentData={currentData} categories={null} />
                   )
