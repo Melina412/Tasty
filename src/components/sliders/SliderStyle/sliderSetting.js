@@ -2,7 +2,7 @@ export const settings = {
   dots: false,
   infinite: true,
   speed: 700,
-  slidesToShow: 3, // Hier werden mindestens 3 Elemente nebeneinander angezeigt
+  slidesToShow: 4, // Hier werden mindestens 3 Elemente nebeneinander angezeigt
   slidesToScroll: 2, // 3 Elemente gleichzeitig scrollen
   responsive: [
     {

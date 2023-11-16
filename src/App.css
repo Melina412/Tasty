@@ -1,6 +1,6 @@
 @font-face {
   font-family: Montserrat;
-  src: url("../public/Montserrat-VariableFont_wght.ttf");
+  src: url("/Montserrat-VariableFont_wght.ttf");
 }
 
 :root {
@@ -12,6 +12,12 @@
   --neutral-gray1: #48525f;
   --dark: #0a2533;
   --text-gray: #97a2b0;
+  --neutral-grey-2: #97a2b0;
+
+  --border-lightmode: 1px solid #fbfbfb;
+  --border-darkmode: 1px solid rgba(111, 185, 190, 0.1);
+  --shadow-lightmode: 0px 2px 16px 0px rgba(6, 51, 54, 0.1);
+  --shadow-darkmode: 0px 2px 16px 0px rgba(111, 185, 190, 0.2);
 }
 
 * {
@@ -19,8 +25,26 @@
   padding: 0;
   box-sizing: border-box;
   font-size: 62.5%;
-  font-family: Montserrat;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
-.container {
-  width: 390px;
+
+.dark {
+  background-color: var(--neutral-dark);
+  color: white;
 }
+
+.dark path {
+  stroke: white;
+}
+
+.dark circle {
+  stroke: white;
+}
+
+/*
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    margin: 0 auto;
+  }
+} */

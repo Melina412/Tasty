@@ -6,51 +6,45 @@ import Slider from "react-slick";
 
 // CSS
 import styles from "./AreasSlider.module.css";
-import "./SliderStyle/slick.css";
-import "./SliderStyle/slickTheme.css";
-import { settings } from "./SliderStyle/sliderSetting";
+import c_styles from "./CategoriesSlider.module.css";
 
-const CategoriesSlider = () => {
-  const [categorys, setCategorys] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await FetchAPI("categories.php");
-        if (response && response.categories) {
-          const categorysItem = response.categories.map((category) => ({
-            categoryId: category.idCategory,
-            categoryName: category.strCategory,
-            categoryImg: category.strCategoryThumb,
-            categoryDescription: category.strCategoryDescription,
-          }));
-          setCategorys(categorysItem);
-        }
-      } catch (err) {
-        console.error("Fehler beim Laden der Daten:", err);
-      }
-    }
-    fetchData();
-  }, []);
+const CategoriesSlider = (props) => {
+  const settings = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <>
-      <section className="categorysSlider">
-        <div className={styles.sliderHeader}>
+      <section className={c_styles.categorysSlider}>
+        <div className={styles.slider_header}>
           <h3>Categories</h3>
-          {categorys.length > 1 && (
+          {props.categorys.length > 1 && (
             <Link to="/search/categories/all">See All</Link>
           )}
         </div>
-        {categorys.length > 0 && (
+        {props.categorys.length > 0 && (
           <Slider {...settings}>
-            {categorys.map((category, index) => (
+            {props.categorys.map((category, index) => (
               <div key={index}>
                 <Link
-                  to={`/categoryAreaList/categories/${category.categoryName}`}
+                  className={c_styles.link_categorie}
+                  to={`/search/categories/${category.categoryName}`}
                 >
-                  <div>
+                  <div className={c_styles.item_category}>
                     <img
                       src={category.categoryImg}
                       alt={category.categoryName}
+                      className={c_styles.img_category}
                     />
                     <h3>{category.categoryName}</h3>
                   </div>

@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import Ingredients from "../components/Ingredients";
-import Instructions from "../components/Instructions";
-import NavBar from "../components/NavBar";
 import FetchAPI from "../functions/FetchAPI";
+import { FavoriteContext } from "../context/Context";
+import { ThemeContext } from "../context/Context";
 
-import styles from "../pages/Detailpage.module.css";
+import styles from '../pages/Detailpage.module.css';
+import VideoPlayer from '../components/player/VideoPlayer';
 
-const DetailPage = () => {
+const DetailPage = ({ children }) => {
+  const { theme } = useContext(ThemeContext);
   const [singleMeal, setSingleMeal] = useState();
+  const { favorite, setFavorite } = useContext(FavoriteContext);
+  const [isShownVideo, setIsShownVideo] = useState(false);
 
   // - für die id vom Meal of the Day
   const idParams = useParams();
@@ -23,11 +26,15 @@ const DetailPage = () => {
           setSingleMeal(response.meals);
         }
       } catch (err) {
-        console.error("Fehler beim Laden der Daten:", err);
+        console.error('Fehler beim Laden der Daten:', err);
       }
     }
     fetchData();
   }, []);
+
+  const ifchecked = favorite.some((item) => item.idMeal === id);
+
+  console.log(singleMeal);
 
   const [toggle, setToggle] = useState(true);
 
@@ -35,26 +42,45 @@ const DetailPage = () => {
     setToggle((toggle) => !toggle);
   };
 
+  const handleSetFavorites = () => {
+    favorite.some((item) => item.idMeal === id)
+      ? setFavorite((currentFavorites) =>
+          currentFavorites.filter((cur) => cur.idMeal !== singleMeal[0].idMeal)
+        )
+      : setFavorite((currentFavorites) => [...currentFavorites, singleMeal[0]]);
+  };
+
+  const handleSetShownVideo = () => {
+    setIsShownVideo(!isShownVideo);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       {singleMeal ? (
-        <section>
+        <section className={`${styles.mediaflex} ${theme ? styles.dark : ""}`}>
           <img
             className={`${styles.img}`}
             src={singleMeal[0].strMealThumb}
             alt="Foto vom Gericht"
           />
-
           <article className={`${styles.details}`}>
             <h1>{singleMeal[0].strMeal}</h1>
             <h3>{singleMeal[0].strCategory}</h3>
             <h4>{singleMeal[0].strArea}</h4>
+            <input
+              className={`${styles.input}`}
+              onClick={handleSetFavorites}
+              type="checkbox"
+              name="favorite"
+              defaultChecked={ifchecked}
+            />
             <div>
-              <button onClick={toggleFunction}>Ingredients</button>
-              <button
-                onClick={toggleFunction}
-                className={toggle ? "black" : null}
-              >
+              <button className={toggle ? `${styles.black}` : null} onClick={toggleFunction}>
+                Ingredients
+              </button>
+
+              <button onClick={toggleFunction} className={toggle ? null : `${styles.black}`}>
                 Instructions
               </button>
             </div>
@@ -115,13 +141,25 @@ const DetailPage = () => {
             <article className={`${styles.instructions}`}>
               <h2>Instructions</h2>
               <p>{singleMeal[0].strInstructions}</p>
-              <a href={singleMeal[0].strYoutube} target="_blank">
-                Video
-              </a>
+              <a onClick={handleSetShownVideo}>Video</a>
+              {isShownVideo && (
+                <VideoPlayer
+                  youtubeLink={singleMeal[0].strYoutube}
+                  onHandleSetIsShownVideo={handleSetShownVideo}
+                />
+              )}
             </article>
           )}
-
-          <NavBar />
+            <div className={`${styles.icon}`}>
+              <a target="_blank" href="https://icons8.com/icon/581/herzen">
+                Herz
+              </a>{" "}
+              <p> Icon von </p>
+              <a target="_blank" href="https://icons8.com">
+                Icons8
+              </a>
+            </div>
+          {children}
         </section>
       ) : (
         <h1 className={`${styles.loading}`}>Loading...</h1>

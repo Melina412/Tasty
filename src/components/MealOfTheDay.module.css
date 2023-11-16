@@ -1,19 +1,78 @@
-.random_meal h3 {
-  font-size: 1.5rem;
+.random_meal_title {
+  font-size: 2rem;
+  font-weight: bold;
   margin-bottom: 20px;
 }
 .random_meal {
   margin-bottom: 25px;
 }
 .meal_card {
+  display: inline-block;
+  position: relative;
   border-radius: 15px;
-  background: url("../../public/img/randomMealCard.jpg") no-repeat center;
+  background: url("/img/randomMealCard.jpg") no-repeat center;
   background-size: cover;
-  width: 80%;
+  width: 300px;
+  min-height: 185px;
   overflow: hidden;
+  padding-bottom: 10px;
+}
+.area_category {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 9px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.area_category p {
+  font-size: 1.4rem;
+  margin-left: 3px;
+  color: var(--white);
 }
 .meal_card h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  width: 60%;
+  color: var(--white);
+  margin-left: 1rem;
+  margin-top: 85px;
+  line-height: 1.5;
 }
 .img_random_meal {
-  width: 100px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  align-self: flex-end;
+  width: 45%;
+  margin-right: -18px;
+  margin-top: -18px;
+  border-radius: 40%;
+}
+.meal_category {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 35%;
+}
+
+@media only screen and (min-width: 768px) {
+  .meal_card {
+    width: 600px;
+    min-height: 310px;
+  }
+  .meal_card h2 {
+    margin-top: 200px;
+  }
+  .area_category {
+    margin-top: 25px;
+  }
+  .img_random_meal {
+    right: 0;
+    top: 0;
+    width: 40%;
+    margin-right: -28px;
+    margin-top: -28px;
+    border-radius: 44%;
+  }
 }

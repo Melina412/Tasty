@@ -1,3 +1,7 @@
+.mediaflex {
+  width: 100vw;
+}
+
 .img {
   width: 100%;
   height: 40vh;
@@ -30,7 +34,7 @@
   margin: 0 auto 10px 25px;
 }
 
-.details div {
+.buttondiv {
   background-color: #e6ebf2;
   padding: 3px 1px;
   display: block;
@@ -39,8 +43,14 @@
   border-radius: 15px;
 }
 
-.details div button {
-  color: black;
+.flex {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  align-items: center;
+}
+
+.details button {
   font-size: 1.6rem;
   font-weight: 600;
   padding: 12px 30px;
@@ -48,13 +58,37 @@
   border: none;
   border-radius: 15px;
   margin: 3.3px;
-  background-color: transparent;
+}
+.input {
+  -webkit-appearance: none;
+}
+
+.input::before {
+  width: 40px;
+  height: 40px;
+  background-image: url("../img/herz-leer.png");
+  display: block;
+  content: "";
+  float: left;
+  margin-bottom: 30px;
+  z-index: 5;
+}
+.input:checked::before {
+  background-image: url("../img/herz-rot.png");
+}
+
+.dark .input::before {
+  background-image: url("../img/herz-weiß.png");
+}
+
+.dark .input:checked::before {
+  background-image: url("../img/herz-rot.png");
 }
 
 /* --- Instructions */
 
 .instructions {
-  margin-bottom: 25%;
+  padding-bottom: 10%;
 }
 
 .instructions h2 {
@@ -97,7 +131,7 @@
 /* --- Ingredients */
 
 .ingredients {
-  margin-bottom: 25%;
+  padding-bottom: 10%;
 }
 
 .ingredients h2 {
@@ -107,7 +141,7 @@
 
 .ingredients p {
   font-weight: 700;
-  color: black;
+
   font-size: 1.6rem;
   line-height: 145%;
   margin: 0 60px 10px 25px;
@@ -130,13 +164,34 @@
 
 .black {
   background-color: black;
+  color: #ffffff;
+}
+
+.icon {
+  font-family: Montserrat;
+  color: black;
+  padding-bottom: 25%;
+}
+
+.icon p {
+  display: inline;
+  font-size: 1rem;
+}
+
+.icon a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
 }
 
 @media only screen and (min-width: 768px) {
   .img {
-    height: auto;
-    width: 70%;
+    width: 100%;
+    height: 100%;
+    margin: 10% auto;
     display: block;
-    margin: 0 auto;
+  }
+  .mediaflex {
+    display: flex;
   }
 }

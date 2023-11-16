@@ -4,11 +4,13 @@
   margin: 0 auto;
   border-radius: 15px;
   border: 1px solid #e6ebf2;
-  font-size: 1rem;
+  font-size: 1.6rem;
+  border: 1px solid var(--brand-secondary);
 }
-
+.search_input:focus {
+}
 .mag_glass_container {
   position: relative;
   width: 90%;
-  margin: 60px auto;
+  margin: 0 auto;
 }

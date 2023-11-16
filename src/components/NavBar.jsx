@@ -1,28 +1,47 @@
 import { NavLink } from "react-router-dom";
 import styles from "../components/Navbar.module.css";
+import { useContext } from "react";
+import { ThemeContext } from "../context/Context";
 
-const NavBar = () => {
+import PropTypes from "prop-types";
+
+import HomeIcon from "./navbar/HomeIcon";
+import GlassIcon from "./navbar/GlassIcon";
+import FavoriteIcon from "./navbar/FavoriteIcon";
+import ProfileIcon from "./navbar/ProfileIcon";
+
+const NavBar = ({ activeName }) => {
+  const { setTheme } = useContext(ThemeContext);
+
+  const toggleDarkmode = () => {
+    setTheme((mode) => !mode);
+  };
+
   return (
     <>
       <div className={`${styles.navbar}`}>
         <NavLink to="/home">
-          <img src="../../public/img/profil.svg" alt="Home" />
+          <HomeIcon activeName={activeName} active={styles.active} />
         </NavLink>
-        <NavLink to="/search/:type/:name">
-          <img src="../../public/img/home.svg" alt="Search" />
+        <NavLink to="/search/categories/all">
+          <GlassIcon activeName={activeName} active={styles.active_glass} />
         </NavLink>
-        <NavLink to="/detail/:id">
-          <img src="../../public/img/heart.svg" alt="Heart" />
+        <NavLink to="/favorites">
+          <FavoriteIcon activeName={activeName} active={styles.active} />
         </NavLink>
-        <NavLink>
-          <img src="../../public/img/search.svg" alt="Profil" />
+        <NavLink to="/profile">
+          <ProfileIcon activeName={activeName} active={styles.active_profile} />
         </NavLink>
-        <button>
-          <img src="../../public/img/darkmode.png" alt="Darkmode" />
+        <button onClick={toggleDarkmode}>
+          <img src="/img/darkmode.png" alt="Darkmode" />
         </button>
       </div>
     </>
   );
+};
+
+NavBar.propTypes = {
+  activeName: PropTypes.string,
 };
 
 export default NavBar;

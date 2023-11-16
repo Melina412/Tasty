@@ -1,25 +1,23 @@
-import SearchResultCards from "../SearchResultCards/SearchResultCards";
-import CategoryAreaCards from "../CategoryAreaCards/CategoryAreaCards.jsx";
-import styles from "./List.module.css";
+import SearchResultCards from '../SearchResultCards/SearchResultCards';
+import CategoryAreaCards from '../CategoryAreaCards/CategoryAreaCards.jsx';
+import styles from './List.module.css';
 
 const List = ({ currentData, categories }) => {
-  console.log({ currentData });
-  console.log({ categories });
-  // # die Klasse der section muss noch vertauscht werden, wenn der categories wert da ist
   return (
     <>
-      <section
-        className={
-          categories ? styles.search_result_list : styles.category_area_list
-        }
-        // className={
-        //   categories ? styles.category_area_list : styles.search_result_list
-        // }
-      >
+      <section className={categories ? styles.search_result_list : styles.category_area_list}>
         {currentData.meals && currentData.meals.length > 0 ? (
           currentData.meals.map((item, index) =>
             categories ? (
-              <SearchResultCards key={index} item={item} />
+              <SearchResultCards
+                key={index}
+                item={item}
+                categories={
+                  categories === 'home' || categories === 'areas'
+                    ? item.strCategory
+                    : categories.charAt(0).toUpperCase() + categories.slice(1)
+                }
+              />
             ) : (
               <CategoryAreaCards key={index} item={item} />
             )

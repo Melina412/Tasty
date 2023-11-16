@@ -3,10 +3,13 @@ export const returnSettings = (_typeData, name) => {
   let index = 0;
 
   _typeData.forEach((type, i) => {
-    if (type.strArea === name) {
+    if (type === name) {
       index = i + 1;
+      return;
     }
   });
+
+  let currentIndex = index % 3 === 1 ? Math.round(index / 3) : Math.round(index / 3) - 1;
 
   return {
     rows: 1,
@@ -17,10 +20,10 @@ export const returnSettings = (_typeData, name) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    initialSlide: index % 3 === 1 ? Math.round(index / 3) : Math.round(index / 3) - 1,
-    slickGoTo: index % 3 === 1 ? Math.round(index / 3) : Math.round(index / 3) - 1,
+    initialSlide: currentIndex !== -1 ? currentIndex : 0,
+    slickGoTo: currentIndex !== -1 ? currentIndex : 0,
     touchMove: true,
     accessibility: false,
-    arrows: false,
+    arrows: window.innerWidth > 768 ? true : false,
   };
 };

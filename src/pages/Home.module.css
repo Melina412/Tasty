@@ -1,4 +1,19 @@
 .container {
-  width: 390px;
+  margin: 0px auto;
+  min-height: 100vh;
+}
+.header {
   margin: 0 auto;
+  padding-top: 75px;
+  padding-bottom: 20px;
+}
+.main {
+  width: 90%;
+  margin: 20px auto;
+}
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    margin: 0 auto;
+  }
 }

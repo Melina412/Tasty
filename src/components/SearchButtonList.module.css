@@ -14,3 +14,16 @@
   background-color: #70b9be;
   color: white;
 }
+
+@media (min-width: 550px) {
+  .buttons {
+    /* padding: 10px 20px; */
+    width: 135px;
+  }
+}
+@media (min-width: 768px) {
+  .buttons {
+    /* padding: 10px 20px; */
+    width: 180px;
+  }
+}
