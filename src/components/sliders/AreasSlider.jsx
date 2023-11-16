@@ -7,15 +7,21 @@ import Slider from "react-slick";
 
 // CSS
 import styles from "./AreasSlider.module.css";
-// import "./SliderStyle/slick.css";
-// import "./SliderStyle/slickTheme.css";
-// import { settings } from "./SliderStyle/sliderSetting";
 
 const AreasSlider = (props) => {
   // const [areas, setAreas] = useState([]);
   const settings = {
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   console.log("Von AreasSlider==>", props.areas);
