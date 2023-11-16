@@ -47,11 +47,11 @@ const AreasSlider = (props) => {
           <Slider {...settings}>
             {props.areas.map((area, index) => (
               <Link
+                key={index}
                 to={`/search/areas/${area.description.toLowerCase()}`}
                 className={styles.area_link}
               >
                 <button
-                  key={index}
                   className={`${styles.btn_area} ${
                     index === 0 ? styles.firstArea : ""
                   }`}
