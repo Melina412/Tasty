@@ -78,7 +78,7 @@
 /* - button  */
 
 .button_container {
-  width: 13%;
+  width: 100%;
   padding: 5px 2px;
 }
 
@@ -89,6 +89,10 @@
   border-radius: 8px;
   background: var(--brand-primary);
   cursor: pointer;
+}
+
+.arrow_black {
+  display: none;
 }
 
 /* - darkmode  */
@@ -106,4 +110,34 @@
   background: var(--brand-secondary);
 }
 
+.dark .arrow_white {
+  display: none;
+}
+
+.dark .arrow_black {
+  display: inline;
+}
+
 /* todo : farbe des arrow im darkmode ändern */
+
+/* - media queries  */
+
+@media only screen and (min-width: 768px) {
+  .image {
+    padding: 8px;
+  }
+
+  .button_container {
+    width: 100%;
+    padding: 5px 8px;
+  }
+
+  .button {
+    width: 48px;
+    height: 48px;
+  }
+
+  .button img {
+    width: 20px;
+  }
+}
