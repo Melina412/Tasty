@@ -7,35 +7,22 @@ import Slider from "react-slick";
 // CSS
 import styles from "./AreasSlider.module.css";
 import c_styles from "./CategoriesSlider.module.css";
-// import "./SliderStyle/slick.css";
-// import "./SliderStyle/slickTheme.css";
-// import { settings } from "./SliderStyle/sliderSetting";
 
 const CategoriesSlider = (props) => {
-  // const [categorys, setCategorys] = useState([]);
   const settings = {
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const response = await FetchAPI("categories.php");
-  //       if (response && response.categories) {
-  //         const categorysItem = response.categories.map((category) => ({
-  //           categoryId: category.idCategory,
-  //           categoryName: category.strCategory,
-  //           categoryImg: category.strCategoryThumb,
-  //           categoryDescription: category.strCategoryDescription,
-  //         }));
-  //         setCategorys(categorysItem);
-  //       }
-  //     } catch (err) {
-  //       console.error("Fehler beim Laden der Daten:", err);
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
+
   return (
     <>
       <section className={c_styles.categorysSlider}>

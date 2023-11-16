@@ -87,8 +87,15 @@ const Home = ({ children }) => {
             onHandleSearchByType={fetchDataforName}
           />
         </header>
-        {searchInput && currentData ? (
-          <List currentData={currentData} categories="home" />
+
+        {searchInput ? (
+          currentData ? (
+            <List currentData={currentData} categories="home" />
+          ) : (
+            <p>
+              Leider konnten wir kein passendes Gericht für deine Suche finden.
+            </p>
+          )
         ) : randomMeal && areas && categorys ? (
           <main className={styles.main}>
             <MealOfTheDay randomMeal={randomMeal} />

@@ -25,7 +25,7 @@ function App() {
   const [favorite, setFavorite] = useState([]);
 
   return (
-    <section className={theme ? "dark" : null}>
+    <section className={"container " + (theme ? "dark" : null)}>
       <ThemeContext.Provider value={{ theme, setTheme }}>
         <LoadingContext.Provider value={{ loading, setLoading }}>
           <FavoriteContext.Provider value={{ favorite, setFavorite }}>
