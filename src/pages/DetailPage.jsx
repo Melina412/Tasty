@@ -1,12 +1,12 @@
-import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import FetchAPI from "../functions/FetchAPI";
-import { FavoriteContext } from "../context/Context";
-import { ThemeContext } from "../context/Context";
+import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import FetchAPI from '../functions/FetchAPI';
+import { FavoriteContext } from '../context/Context';
+import { ThemeContext } from '../context/Context';
 
-import styles from "../pages/Detailpage.module.css";
-import VideoPlayer from "../components/player/VideoPlayer";
-import useLocalStorage from "../functions/useLocalStorage";
+import styles from '../pages/Detailpage.module.css';
+import VideoPlayer from '../components/player/VideoPlayer';
+import useLocalStorage from '../functions/useLocalStorage';
 
 const DetailPage = ({ children }) => {
   const { theme } = useContext(ThemeContext);
@@ -18,10 +18,7 @@ const DetailPage = ({ children }) => {
   const idParams = useParams();
   const id = idParams.id;
 
-  const [localFavorite, setLocalFavorite] = useLocalStorage(
-    "favorites",
-    favorite
-  );
+  const [localFavorite, setLocalFavorite] = useLocalStorage('favorites', favorite);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,13 +29,13 @@ const DetailPage = ({ children }) => {
           setSingleMeal(response.meals);
         }
       } catch (err) {
-        console.error("Fehler beim Laden der Daten:", err);
+        console.error('Fehler beim Laden der Daten:', err);
       }
     }
     fetchData();
   }, []);
 
-  const ifchecked = favorite.some((item) => item.idMeal === id);
+  const ifchecked = favorite?.some((item) => item.idMeal === id);
 
   const [toggle, setToggle] = useState(true);
 
@@ -68,7 +65,7 @@ const DetailPage = ({ children }) => {
   return (
     <>
       {singleMeal ? (
-        <section className={`${styles.mediaflex} ${theme ? styles.dark : ""}`}>
+        <section className={`${styles.mediaflex} ${theme ? styles.dark : ''}`}>
           <img
             className={`${styles.img}`}
             src={singleMeal[0].strMealThumb}
@@ -76,8 +73,8 @@ const DetailPage = ({ children }) => {
           />
           <article className={`${styles.details}`}>
             <div className={`${styles.flex}`}>
-              {" "}
-              <h1>{singleMeal[0].strMeal}</h1>{" "}
+              {' '}
+              <h1>{singleMeal[0].strMeal}</h1>{' '}
               <input
                 className={`${styles.input}`}
                 onClick={handleSetFavorites}
@@ -91,17 +88,11 @@ const DetailPage = ({ children }) => {
             <h4>{singleMeal[0].strArea}</h4>
 
             <div className={`${styles.buttondiv}`}>
-              <button
-                className={toggle ? `${styles.black}` : null}
-                onClick={toggleFunction}
-              >
+              <button className={toggle ? `${styles.black}` : null} onClick={toggleFunction}>
                 Ingredients
               </button>
 
-              <button
-                onClick={toggleFunction}
-                className={toggle ? null : `${styles.black}`}
-              >
+              <button onClick={toggleFunction} className={toggle ? null : `${styles.black}`}>
                 Instructions
               </button>
             </div>
@@ -174,7 +165,7 @@ const DetailPage = ({ children }) => {
           <div className={`${styles.icon}`}>
             <a target="_blank" href="https://icons8.com/icon/581/herzen">
               Herz
-            </a>{" "}
+            </a>{' '}
             <p> Icon von </p>
             <a target="_blank" href="https://icons8.com">
               Icons8
