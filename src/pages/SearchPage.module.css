@@ -42,6 +42,7 @@ button {
 
 .content_section {
   margin-top: 75px;
+  min-height: 100vh;
 }
 
 .article_section {
@@ -54,6 +55,7 @@ button {
   grid-template-columns: repeat(3, 1fr);
   gap: 3%;
   justify-content: center;
+  padding-left: 25px;
 }
 
 .buttons_named button {

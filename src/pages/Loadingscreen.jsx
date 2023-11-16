@@ -17,26 +17,26 @@ const Loadingscreen = () => {
     <section className={`${style.loading}`}>
       <img
         className={`${style.vektor1}`}
-        src="../../public/img/oben.svg"
+        src="/img/oben.svg"
         alt="jicfnqovnnc"
       />
       <img
         className={`${style.vektor2}`}
-        src="../../public/img/oben2.svg"
+        src="/img/oben2.svg"
         alt="jicfnqovnnc"
       />
       <div className={`${style.flex}`}>
-        <img src="../../public/img/logo.png" alt="Logo" />
+        <img src="/img/logo.png" alt="Logo" />
         <p>Tasty</p>
       </div>
       <img
         className={`${style.vektor3}`}
-        src="../../public/img/unten.svg"
+        src="/img/unten.svg"
         alt="jicfnqovnnc"
       />
       <img
         className={`${style.vektor4}`}
-        src="../../public/img/unten2.svg"
+        src="/img/unten2.svg"
         alt="jicfnqovnnc"
       />
     </section>
