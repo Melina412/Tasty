@@ -1,13 +1,15 @@
-import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import FetchAPI from "../functions/FetchAPI";
-import { FavoriteContext } from "../context/Context";
+import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import FetchAPI from '../functions/FetchAPI';
+import { FavoriteContext } from '../context/Context';
 
-import styles from "../pages/Detailpage.module.css";
+import styles from '../pages/Detailpage.module.css';
+import VideoPlayer from '../components/player/VideoPlayer';
 
 const DetailPage = ({ children }) => {
   const [singleMeal, setSingleMeal] = useState();
   const { favorite, setFavorite } = useContext(FavoriteContext);
+  const [isShownVideo, setIsShownVideo] = useState(false);
 
   // - für die id vom Meal of the Day
   const idParams = useParams();
@@ -22,7 +24,7 @@ const DetailPage = ({ children }) => {
           setSingleMeal(response.meals);
         }
       } catch (err) {
-        console.error("Fehler beim Laden der Daten:", err);
+        console.error('Fehler beim Laden der Daten:', err);
       }
     }
     fetchData();
@@ -46,8 +48,10 @@ const DetailPage = ({ children }) => {
       : setFavorite((currentFavorites) => [...currentFavorites, singleMeal[0]]);
   };
 
-  // console.log("favorite " + favorite);
-  // console.log(singleMeal);
+  const handleSetShownVideo = () => {
+    setIsShownVideo(!isShownVideo);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <>
@@ -70,17 +74,11 @@ const DetailPage = ({ children }) => {
               defaultChecked={ifchecked}
             />
             <div>
-              <button
-                className={toggle ? `${styles.black}` : null}
-                onClick={toggleFunction}
-              >
+              <button className={toggle ? `${styles.black}` : null} onClick={toggleFunction}>
                 Ingredients
               </button>
 
-              <button
-                onClick={toggleFunction}
-                className={toggle ? null : `${styles.black}`}
-              >
+              <button onClick={toggleFunction} className={toggle ? null : `${styles.black}`}>
                 Instructions
               </button>
             </div>
@@ -141,9 +139,13 @@ const DetailPage = ({ children }) => {
             <article className={`${styles.instructions}`}>
               <h2>Instructions</h2>
               <p>{singleMeal[0].strInstructions}</p>
-              <a href={singleMeal[0].strYoutube} target="_blank">
-                Video
-              </a>
+              <a onClick={handleSetShownVideo}>Video</a>
+              {isShownVideo && (
+                <VideoPlayer
+                  youtubeLink={singleMeal[0].strYoutube}
+                  onHandleSetIsShownVideo={handleSetShownVideo}
+                />
+              )}
             </article>
           )}
 
