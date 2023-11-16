@@ -1,37 +1,61 @@
 .main {
-  padding: 25px;
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 100px;
+  width: 100%;
 }
 .card {
+  margin: 10px auto 0 auto;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
-  width: 100%;
+  width: 85%;
   border-radius: 16px;
   padding: 20px;
   border: 1px solid var(--brand-secondary);
   box-shadow: var(--shadow-lightmode);
   background: var(--neutral-true-white);
 }
+.card_link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 65%;
+}
 .favorite {
-  font-size: 5rem;
   text-decoration: none;
-  padding-top: 50px;
+  margin-top: 10px;
   color: black;
-  display: block;
+  width: 65%;
 }
 .fav {
-  font-size: 2.5rem;
-  margin: 20px auto 0 auto;
+  font-size: 1.7rem;
+  margin: 0 auto;
   text-align: center;
+  margin-bottom: 40px;
 }
 .image {
-  width: 40%;
+  width: 30%;
   border-radius: 16px;
 }
 .mealInfo {
   margin-left: 20px;
 }
+.input {
+  -webkit-appearance: none;
+  width: 40px;
+  height: 40px;
+  background-image: url("../img/herz-rot.png");
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.input:hover {
+  background-image: url("../img/herz-leer.png");
+}
+
+/* .input:checked::before {
+  background-image: url("../img/herz-rot.png");
+} */
 .name {
   font-size: 16px;
   line-height: 145%;
@@ -53,7 +77,6 @@
 .noMeal {
   width: 250px;
   margin: 0 auto;
-  margin-top: 100px;
   text-align: center;
 }
 .noMeal p {
@@ -69,18 +92,22 @@
   margin-top: 50px;
 }
 
-.dark .main {
-  color: var(--white);
-}
-
 .dark .card {
   border: var(--border-darkmode);
   box-shadow: var(--shadow-darkmode);
 }
+.dark .name {
+  color: var(--white);
+}
+.dark .mealCategory p {
+  color: var(--neutral-grey-2);
+}
 
 @media only screen and (min-width: 768px) {
-  .container {
-    width: 768px;
-    margin: 0 auto;
+  .main {
+    width: 100vw;
+  }
+  .fav {
+    font-size: 2.5rem;
   }
 }

@@ -11,11 +11,19 @@ import styles from "./AreasSlider.module.css";
 const AreasSlider = (props) => {
   // const [areas, setAreas] = useState([]);
   const settings = {
-    slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToShow: 6,
+    slidesToScroll: 3,
+    arrows: false,
     responsive: [
       {
         breakpoint: 768,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 390,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,

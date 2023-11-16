@@ -10,11 +10,19 @@ import c_styles from "./CategoriesSlider.module.css";
 
 const CategoriesSlider = (props) => {
   const settings = {
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
+    arrows: false,
     responsive: [
       {
         breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 390,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
