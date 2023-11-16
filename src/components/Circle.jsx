@@ -31,7 +31,7 @@ const Circle = (props) => {
       color = "#0f4701";
       break;
     case "Goat":
-      color = "#a89a91";
+      color = "#4a3c32";
       break;
     case "Dessert":
       color = "#c1121c";

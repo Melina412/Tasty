@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import FetchAPI from "../functions/FetchAPI";
 import styles from "../pages/Favorites.module.css";
 import Circle from "../components/Circle";
+import { ThemeContext } from "../context/Context";
 
 const Favorites = ({ children }) => {
   const { favorite, setFavorite } = useContext(FavoriteContext);
   const [singleMeal, setSingleMeal] = useState();
+  const { theme } = useContext(ThemeContext);
 
   const id = favorite;
 
@@ -26,11 +28,23 @@ const Favorites = ({ children }) => {
     fetchData();
   }, []);
 
-  console.log("Von Favorite : SingleMeal ==>", singleMeal);
+  // const faveId =
+  //   singleMeal && singleMeal.length > 0 ? singleMeal[0].idMeal : "";
 
-  console.log("Von Favorite : favorite ==>", favorite);
+  const deleteFav = (iddelete) => {
+    // if (iddelete) {
+    //   setFavorite((currentFavorites) =>
+    //     currentFavorites.filter((cur) => cur.idMeal !== iddelete)
+    //   );
+    console.log("Von Favorite: delete ==>", favorite);
+    // }
+  };
+
+  console.log("Von Favorite: SingleMeal ==>", singleMeal);
+  console.log("Von Favorite: favorite ==>", favorite);
+
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main} ${theme ? styles.dark : ""}`}>
       {favorite && favorite.length > 0 ? (
         <>
           <h1 className={styles.fav}>
@@ -38,27 +52,36 @@ const Favorites = ({ children }) => {
           </h1>
           {favorite.map((meal) => {
             return (
-              <Link
-                to={`/detail/${meal.idMeal}`}
-                className={`${styles.favorite}`}
-              >
-                <div key={crypto.randomUUID()}>
-                  <div className={styles.card}>
-                    <img
-                      className={styles.image}
-                      src={meal.strMealThumb}
-                      alt={meal.strMeal}
-                    />
-                    <div className={styles.mealInfo}>
-                      <p className={styles.name}>{meal.strMeal}</p>
-                      <div className={styles.mealCategory}>
-                        <Circle categorie={meal.strCategory} />
-                        <p>{meal.strCategory}</p>
+              <div key={crypto.randomUUID()}>
+                <div className={styles.card}>
+                  <Link
+                    to={`/detail/${meal.idMeal}`}
+                    className={`${styles.favorite}`}
+                  >
+                    <div className={styles.card_link}>
+                      <img
+                        className={styles.image}
+                        src={meal.strMealThumb}
+                        alt={meal.strMeal}
+                      />
+                      <div className={styles.mealInfo}>
+                        <p className={styles.name}>{meal.strMeal}</p>
+                        <div className={styles.mealCategory}>
+                          <Circle categorie={meal.strCategory} />
+                          <p>{meal.strCategory}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
+                  <input
+                    className={`${styles.input}`}
+                    type="checkbox"
+                    name="favorite"
+                    defaultChecked="false"
+                    onChange={deleteFav(meal.idMeal)}
+                  />
                 </div>
-              </Link>
+              </div>
             );
           })}
         </>
