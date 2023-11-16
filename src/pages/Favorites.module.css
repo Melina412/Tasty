@@ -1,8 +1,9 @@
 .main {
-  padding-top: 100px;
+  padding-top: 50px;
   width: 100%;
   min-height: 100vh;
-  padding-bottom: 25%;
+  display: flex;
+  flex-direction: column;
 }
 .card {
   margin: 10px auto 0 auto;
@@ -104,10 +105,24 @@
   color: var(--neutral-grey-2);
 }
 
+.icon {
+  font-family: Montserrat;
+  color: black;
+  padding-bottom: 25%;
+  display: flex;
+  align-items: center;
+  align-self: end;
+}
+.icon a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+}
+.icon p {
+  font-size: 1rem;
+}
+
 @media only screen and (min-width: 768px) {
-  .main {
-    width: 100vw;
-  }
   .fav {
     font-size: 2.5rem;
   }
