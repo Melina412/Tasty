@@ -50,3 +50,21 @@
   background-color: #02191a7b;
   color: white;
 }
+
+.icon {
+  font-family: Montserrat;
+  color: black;
+  position: fixed;
+  bottom: 10%;
+}
+
+.icon p {
+  display: inline;
+  font-size: 1rem;
+}
+
+.icon a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+}

@@ -151,6 +151,9 @@ const DetailPage = ({ children }) => {
               </article>
             )}
             <div className={`${styles.icon}`}>
+              <a target="_blank" href="https://icons8.com/icon/581/herzen">
+                Herz
+              </a>{" "}
               <p> Icon von </p>
               <a target="_blank" href="https://icons8.com">
                 Icons8

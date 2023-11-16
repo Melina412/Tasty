@@ -22,6 +22,15 @@ const Profile = ({ children }) => {
           <input className={`${styles.input}`} type="text" name="input" />
         </div>
 
+        <div className={`${styles.icon}`}>
+          <a target="_blank" href="https://icons8.com/icon/107049/konto-testen">
+            Profilbild
+          </a>
+          <p> Icon von </p>
+          <a target="_blank" href="https://icons8.com">
+            Icons8
+          </a>
+        </div>
         {children}
       </main>
     </>
