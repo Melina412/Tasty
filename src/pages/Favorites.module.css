@@ -1,7 +1,8 @@
 .main {
-  min-height: 100vh;
   padding-top: 100px;
   width: 100%;
+  min-height: 100vh;
+  padding-bottom: 25%;
 }
 .card {
   margin: 10px auto 0 auto;

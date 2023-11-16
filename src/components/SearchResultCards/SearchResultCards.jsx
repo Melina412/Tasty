@@ -23,11 +23,7 @@ const SearchResultCards = (props) => {
         {/*  */}
         <div className={styles.text_container}>
           <div className={styles.meal_container}>
-            <p
-              className={`${styles.name} ${theme ? styles.dark : styles.light}`}
-            >
-              {props.item.strMeal}
-            </p>
+            <p className={styles.name}>{props.item.strMeal}</p>
             <div className={styles.category_container}>
               {/* -------------------- Circle props --------------------  */}
               <Circle categorie={props.categories} />
@@ -39,7 +35,16 @@ const SearchResultCards = (props) => {
           <Link className={styles.link} to={`/detail/${props.item.idMeal}`}>
             <div className={styles.button_container}>
               <button className={styles.button}>
-                <img src="/arrow-white.svg" alt="link to meal" />
+                <img
+                  className={styles.arrow_white}
+                  src="/img/cards/arrow-white.svg"
+                  alt="link to meal"
+                />
+                <img
+                  className={styles.arrow_black}
+                  src="/img/cards/arrow-black.svg"
+                  alt="link to meal"
+                />
               </button>
             </div>
           </Link>

@@ -36,9 +36,9 @@
   font-size: 16px;
   line-height: 145%;
   color: var(--neutral-dark);
-  white-space: nowrap;
+  white-space: nowrap; /* Text wird in einer Zeile dargestellt */
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; /* Wenn  Text zu lang ist wird ... angehängt */
   flex: 1;
   max-width: 100px;
   /* - max-width muss bei responsive raus, aber nur so geht das mit dem text-wrap */
@@ -54,3 +54,15 @@
   border: var(--border-darkmode);
   box-shadow: var(--shadow-darkmode);
 }
+
+/* - media queries  */
+
+/* @media only screen and (min-width: 768px) {
+  .name {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    min-height: 47px;
+  }
+} */
