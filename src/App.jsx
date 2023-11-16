@@ -26,7 +26,9 @@ function App() {
   const [localFavorite] = useLocalStorage('favorites');
 
   useEffect(() => {
-    setFavorite(localFavorite);
+    if (localFavorite) {
+      setFavorite(localFavorite);
+    }
   }, [localFavorite]);
 
   return (
