@@ -11,7 +11,7 @@ import FavoriteIcon from "./navbar/FavoriteIcon";
 import ProfileIcon from "./navbar/ProfileIcon";
 
 const NavBar = ({ activeName }) => {
-  const { setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const toggleDarkmode = () => {
     setTheme((mode) => !mode);
@@ -19,7 +19,7 @@ const NavBar = ({ activeName }) => {
 
   return (
     <>
-      <div className={`${styles.navbar}`}>
+      <div className={`${styles.navbar} ${theme ? styles.dark : ""}`}>
         <NavLink to="/home">
           <HomeIcon activeName={activeName} active={styles.active} />
         </NavLink>
