@@ -28,16 +28,13 @@ const Favorites = ({ children }) => {
     fetchData();
   }, []);
 
-  // const faveId =
-  //   singleMeal && singleMeal.length > 0 ? singleMeal[0].idMeal : "";
-
-  const deleteFav = (iddelete) => {
-    // if (iddelete) {
-    //   setFavorite((currentFavorites) =>
-    //     currentFavorites.filter((cur) => cur.idMeal !== iddelete)
-    //   );
-    console.log("Von Favorite: delete ==>", favorite);
-    // }
+  const deleteFav = (idToDelete) => {
+    if (idToDelete) {
+      setFavorite((currentFavorites) =>
+        currentFavorites.filter((cur) => cur.idMeal !== idToDelete)
+      );
+      console.log("Von Favorite: delete ==>", favorite);
+    }
   };
 
   console.log("Von Favorite: SingleMeal ==>", singleMeal);
@@ -78,7 +75,7 @@ const Favorites = ({ children }) => {
                     type="checkbox"
                     name="favorite"
                     defaultChecked="false"
-                    onChange={deleteFav(meal.idMeal)}
+                    onChange={() => deleteFav(meal.idMeal)}
                   />
                 </div>
               </div>

@@ -20,7 +20,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 65%;
+  width: 85%;
 }
 .favorite {
   text-decoration: none;
@@ -54,17 +54,17 @@
   background-image: url("../img/herz-leer.png");
 }
 
-/* .input:checked::before {
-  background-image: url("../img/herz-rot.png");
-} */
 .name {
   font-size: 16px;
-  line-height: 145%;
   color: var(--neutral-dark);
+  flex: 1;
+  font-weight: 700;
+  line-height: 135%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex: 1;
-  max-width: 150px;
 }
 .mealCategory {
   display: flex;
