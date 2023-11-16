@@ -69,6 +69,27 @@
   font-size: 1rem;
 }
 
+
+.name {
+  display: flex;
+  flex-direction: column;
+}
+
+.name > div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.name svg {
+  height: 20px;
+}
+
+.input {
+  padding: 5px;
+  border-radius: 5px;
+}
+
 @media only screen and (min-width: 768px) {
   .flexcontainer {
     justify-content: space-around;
