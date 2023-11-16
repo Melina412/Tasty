@@ -1,0 +1,70 @@
+.profile {
+  min-height: 100vh;
+}
+
+.profile h1 {
+  color: var(--brand-secondary);
+  font-size: 3rem;
+  text-align: center;
+  padding: 50px;
+}
+
+.flexcontainer {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.flexcontainer h4 {
+  font-size: 1.4rem;
+  margin-top: 30px;
+}
+
+.flexcontainer p {
+  font-size: 2.2rem;
+  margin-top: 5px;
+}
+
+.inputcontainer {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.inputcontainer label {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.inputcontainer input {
+  height: 100px;
+  width: 100%;
+  border: 1px solid var(--brand-secondary);
+  border-radius: 20px;
+}
+
+.dark .input {
+  background-color: #02191a7b;
+  color: white;
+}
+
+.icon {
+  font-family: Montserrat;
+  color: black;
+  position: fixed;
+  bottom: 10%;
+}
+
+.icon p {
+  display: inline;
+  font-size: 1rem;
+}
+
+.icon a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+}

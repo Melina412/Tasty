@@ -1,6 +1,6 @@
 @font-face {
   font-family: Montserrat;
-  src: url('../public/Montserrat-VariableFont_wght.ttf');
+  src: url("/Montserrat-VariableFont_wght.ttf");
 }
 
 :root {
@@ -40,3 +40,11 @@
 .dark circle {
   stroke: white;
 }
+
+/*
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    margin: 0 auto;
+  }
+} */

@@ -7,34 +7,28 @@ const Circle = (props) => {
       color = "#70B9BE";
       break;
     case "Lamb":
-      color = "#FcFcFc";
+      color = "#80414e";
       break;
     case "Pork":
-      color = "#1245Fc";
+      color = "#e8bac3";
       break;
     case "Starter":
-      color = "#Ea1Ea1";
-      break;
-    case "Lamb":
-      color = "#FcFcFc";
+      color = "#a7ad2a";
       break;
     case "Breakfast":
-      color = "#c4c4c4";
+      color = "#737272";
       break;
     case "Chicken":
       color = "#ddc252";
       break;
     case "Miscellaneous":
-      color = "#113399";
-      break;
-    case "Miscellaneous":
-      color = "#56fc31";
+      color = "#901199";
       break;
     case "Seafood":
-      color = "#0000f4";
+      color = "#0039f5";
       break;
     case "Vegan":
-      color = "#009000";
+      color = "#0f4701";
       break;
     case "Goat":
       color = "#a89a91";
@@ -49,7 +43,7 @@ const Circle = (props) => {
       color = "#A8D8B9";
       break;
     case "Vegetarian":
-      color = "#22aa00";
+      color = "#32f002";
       break;
     default:
       color = "transparent";

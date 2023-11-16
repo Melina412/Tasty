@@ -1,7 +1,86 @@
+.main {
+  padding: 25px;
+  height: 100vh;
+}
+.card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--brand-secondary);
+  box-shadow: var(--shadow-lightmode);
+  background: var(--neutral-true-white);
+}
 .favorite {
   font-size: 5rem;
   text-decoration: none;
   padding-top: 50px;
   color: black;
   display: block;
+}
+.fav {
+  font-size: 2.5rem;
+  margin: 20px auto 0 auto;
+  text-align: center;
+}
+.image {
+  width: 40%;
+  border-radius: 16px;
+}
+.mealInfo {
+  margin-left: 20px;
+}
+.name {
+  font-size: 16px;
+  line-height: 145%;
+  color: var(--neutral-dark);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  max-width: 150px;
+}
+.mealCategory {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+}
+.mealCategory p {
+  margin-left: 10px;
+}
+.noMeal {
+  width: 250px;
+  margin: 0 auto;
+  margin-top: 100px;
+  text-align: center;
+}
+.noMeal p {
+  line-height: 1.5;
+}
+.noMeal a {
+  text-decoration: none;
+  background-color: var(--brand-secondary);
+  color: var(--white);
+  border-radius: 25px;
+  padding: 10px 25px;
+  display: inline-block;
+  margin-top: 50px;
+}
+
+.dark .main {
+  color: var(--white);
+}
+
+.dark .card {
+  border: var(--border-darkmode);
+  box-shadow: var(--shadow-darkmode);
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    margin: 0 auto;
+  }
 }

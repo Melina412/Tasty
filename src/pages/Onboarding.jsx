@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Home from "./Home";
 import style from "../pages/Onboarding.module.css";
-import onboarding from "../../public/img/onboarding.png";
+import onboarding from "/img/onboarding.png";
 
 const Onboarding = () => {
   return (

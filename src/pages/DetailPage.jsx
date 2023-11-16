@@ -1,12 +1,14 @@
-import { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import FetchAPI from '../functions/FetchAPI';
-import { FavoriteContext } from '../context/Context';
+import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
+import FetchAPI from "../functions/FetchAPI";
+import { FavoriteContext } from "../context/Context";
+import { ThemeContext } from "../context/Context";
 
 import styles from '../pages/Detailpage.module.css';
 import VideoPlayer from '../components/player/VideoPlayer';
 
 const DetailPage = ({ children }) => {
+  const { theme } = useContext(ThemeContext);
   const [singleMeal, setSingleMeal] = useState();
   const { favorite, setFavorite } = useContext(FavoriteContext);
   const [isShownVideo, setIsShownVideo] = useState(false);
@@ -56,18 +58,18 @@ const DetailPage = ({ children }) => {
   return (
     <>
       {singleMeal ? (
-        <section>
+        <section className={`${styles.mediaflex} ${theme ? styles.dark : ""}`}>
           <img
             className={`${styles.img}`}
             src={singleMeal[0].strMealThumb}
             alt="Foto vom Gericht"
           />
-
           <article className={`${styles.details}`}>
             <h1>{singleMeal[0].strMeal}</h1>
             <h3>{singleMeal[0].strCategory}</h3>
             <h4>{singleMeal[0].strArea}</h4>
             <input
+              className={`${styles.input}`}
               onClick={handleSetFavorites}
               type="checkbox"
               name="favorite"
@@ -148,7 +150,15 @@ const DetailPage = ({ children }) => {
               )}
             </article>
           )}
-
+            <div className={`${styles.icon}`}>
+              <a target="_blank" href="https://icons8.com/icon/581/herzen">
+                Herz
+              </a>{" "}
+              <p> Icon von </p>
+              <a target="_blank" href="https://icons8.com">
+                Icons8
+              </a>
+            </div>
           {children}
         </section>
       ) : (
