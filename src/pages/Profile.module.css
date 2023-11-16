@@ -9,6 +9,11 @@
   padding: 50px;
 }
 
+.profile_image {
+  border-radius: 50%;
+  outline: 3px solid var(--brand-secondary);
+}
+
 .flexcontainer {
   display: flex;
   justify-content: center;
@@ -39,11 +44,28 @@
   margin-bottom: 10px;
 }
 
-.inputcontainer input {
+.inputcontainer textarea {
   height: 100px;
   width: 100%;
   border: 1px solid var(--brand-secondary);
   border-radius: 20px;
+  padding: 10px;
+  font-size: 1.6rem;
+}
+
+.inputcontainer button {
+  text-decoration: none;
+  text-align: center;
+  border-radius: 10px;
+  background-color: var(--brand-secondary);
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 800;
+  display: block;
+  margin-left: auto;
+  padding: 10px 0;
+  width: 25%;
+  transition: 1s;
 }
 
 .dark .input {
@@ -69,7 +91,6 @@
   font-size: 1rem;
 }
 
-
 .name {
   display: flex;
   flex-direction: column;
@@ -88,6 +109,8 @@
 .input {
   padding: 5px;
   border-radius: 5px;
+  width: 85%;
+  overflow: hidden;
 }
 
 @media only screen and (min-width: 768px) {
