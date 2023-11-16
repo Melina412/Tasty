@@ -77,3 +77,10 @@
   border: var(--border-darkmode);
   box-shadow: var(--shadow-darkmode);
 }
+
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    margin: 0 auto;
+  }
+}
