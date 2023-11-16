@@ -44,15 +44,19 @@
 }
 .input {
   -webkit-appearance: none;
+  appearance: none;
   width: 40px;
   height: 40px;
-  background-image: url("../img/herz-rot.png");
+  background-image: url("/img/herz-rot.png");
   cursor: pointer;
   transition: 0.5s;
 }
 
 .input:hover {
-  background-image: url("../img/herz-leer.png");
+  background-image: url("/img/herz-leer.png");
+}
+.dark .input:hover {
+  background-image: url("/img/herz-weiß.png");
 }
 
 .name {
@@ -107,7 +111,7 @@
 
 .icon {
   font-family: Montserrat;
-  color: black;
+  color: rgb(195, 193, 193);
   padding-bottom: 25%;
   display: flex;
   align-items: center;
@@ -115,7 +119,7 @@
 }
 .icon a {
   text-decoration: none;
-  color: black;
+  color: rgb(195, 193, 193);
   font-size: 1rem;
 }
 .icon p {
