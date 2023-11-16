@@ -57,12 +57,13 @@
 }
 .input {
   -webkit-appearance: none;
+  appearance: none;
 }
 
 .input::before {
   width: 40px;
   height: 40px;
-  background-image: url("../img/herz-leer.png");
+  background-image: url("/img/herz-leer.png");
   display: block;
   content: "";
   float: left;
@@ -70,15 +71,15 @@
   z-index: 5;
 }
 .input:checked::before {
-  background-image: url("../img/herz-rot.png");
+  background-image: url("/img/herz-rot.png");
 }
 
 .dark .input::before {
-  background-image: url("../img/herz-weiß.png");
+  background-image: url("/img/herz-weiß.png");
 }
 
 .dark .input:checked::before {
-  background-image: url("../img/herz-rot.png");
+  background-image: url("/img/herz-rot.png");
 }
 
 /* --- Instructions */
