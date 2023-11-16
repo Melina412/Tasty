@@ -1,7 +1,3 @@
-.mediaflex {
-  width: 100vw;
-}
-
 .img {
   width: 100%;
   height: 40vh;
@@ -61,12 +57,13 @@
 }
 .input {
   -webkit-appearance: none;
+  appearance: none;
 }
 
 .input::before {
   width: 40px;
   height: 40px;
-  background-image: url("../img/herz-leer.png");
+  background-image: url("/img/herz-leer.png");
   display: block;
   content: "";
   float: left;
@@ -74,15 +71,15 @@
   z-index: 5;
 }
 .input:checked::before {
-  background-image: url("../img/herz-rot.png");
+  background-image: url("/img/herz-rot.png");
 }
 
 .dark .input::before {
-  background-image: url("../img/herz-weiß.png");
+  background-image: url("/img/herz-weiß.png");
 }
 
 .dark .input:checked::before {
-  background-image: url("../img/herz-rot.png");
+  background-image: url("/img/herz-rot.png");
 }
 
 /* --- Instructions */
@@ -185,13 +182,14 @@
 }
 
 @media only screen and (min-width: 768px) {
+  /* .buttondiv {
+    max-width: 700px;
+    margin: 0 auto;
+  } */
   .img {
-    width: 100%;
     height: 100%;
-    margin: 10% auto;
+    width: 30%;
     display: block;
-  }
-  .mediaflex {
-    display: flex;
+    margin: 0 auto;
   }
 }

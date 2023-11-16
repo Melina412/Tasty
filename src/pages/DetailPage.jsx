@@ -1,11 +1,12 @@
-import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import FetchAPI from "../functions/FetchAPI";
-import { FavoriteContext } from "../context/Context";
-import { ThemeContext } from "../context/Context";
+import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import FetchAPI from '../functions/FetchAPI';
+import { FavoriteContext } from '../context/Context';
+import { ThemeContext } from '../context/Context';
 
 import styles from '../pages/Detailpage.module.css';
 import VideoPlayer from '../components/player/VideoPlayer';
+import useLocalStorage from '../functions/useLocalStorage';
 
 const DetailPage = ({ children }) => {
   const { theme } = useContext(ThemeContext);
@@ -16,6 +17,8 @@ const DetailPage = ({ children }) => {
   // - für die id vom Meal of the Day
   const idParams = useParams();
   const id = idParams.id;
+
+  const [localFavorite, setLocalFavorite] = useLocalStorage('favorites', favorite);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,9 +35,7 @@ const DetailPage = ({ children }) => {
     fetchData();
   }, []);
 
-  const ifchecked = favorite.some((item) => item.idMeal === id);
-
-  console.log(singleMeal);
+  const ifchecked = favorite?.some((item) => item.idMeal === id);
 
   const [toggle, setToggle] = useState(true);
 
@@ -43,11 +44,17 @@ const DetailPage = ({ children }) => {
   };
 
   const handleSetFavorites = () => {
-    favorite.some((item) => item.idMeal === id)
-      ? setFavorite((currentFavorites) =>
-          currentFavorites.filter((cur) => cur.idMeal !== singleMeal[0].idMeal)
-        )
-      : setFavorite((currentFavorites) => [...currentFavorites, singleMeal[0]]);
+    if (favorite.some((item) => item.idMeal === id)) {
+      setFavorite((currentFavorites) =>
+        currentFavorites.filter((cur) => cur.idMeal !== singleMeal[0].idMeal)
+      );
+      setLocalFavorite((currLocal) =>
+        currLocal.filter((cur) => cur.idMeal !== singleMeal[0].idMeal)
+      );
+    } else {
+      setFavorite((currentFavorites) => [...currentFavorites, singleMeal[0]]);
+      setLocalFavorite([...localFavorite, singleMeal[0]]);
+    }
   };
 
   const handleSetShownVideo = () => {
@@ -58,24 +65,29 @@ const DetailPage = ({ children }) => {
   return (
     <>
       {singleMeal ? (
-        <section className={`${styles.mediaflex} ${theme ? styles.dark : ""}`}>
+        <section className={`${styles.mediaflex} ${theme ? styles.dark : ''}`}>
           <img
             className={`${styles.img}`}
             src={singleMeal[0].strMealThumb}
             alt="Foto vom Gericht"
           />
           <article className={`${styles.details}`}>
-            <h1>{singleMeal[0].strMeal}</h1>
+            <div className={`${styles.flex}`}>
+              {' '}
+              <h1>{singleMeal[0].strMeal}</h1>{' '}
+              <input
+                className={`${styles.input}`}
+                onClick={handleSetFavorites}
+                type="checkbox"
+                name="favorite"
+                defaultChecked={ifchecked}
+              />
+            </div>
+
             <h3>{singleMeal[0].strCategory}</h3>
             <h4>{singleMeal[0].strArea}</h4>
-            <input
-              className={`${styles.input}`}
-              onClick={handleSetFavorites}
-              type="checkbox"
-              name="favorite"
-              defaultChecked={ifchecked}
-            />
-            <div>
+
+            <div className={`${styles.buttondiv}`}>
               <button className={toggle ? `${styles.black}` : null} onClick={toggleFunction}>
                 Ingredients
               </button>
@@ -150,15 +162,15 @@ const DetailPage = ({ children }) => {
               )}
             </article>
           )}
-            <div className={`${styles.icon}`}>
-              <a target="_blank" href="https://icons8.com/icon/581/herzen">
-                Herz
-              </a>{" "}
-              <p> Icon von </p>
-              <a target="_blank" href="https://icons8.com">
-                Icons8
-              </a>
-            </div>
+          <div className={`${styles.icon}`}>
+            <a target="_blank" href="https://icons8.com/icon/581/herzen">
+              Herz
+            </a>{' '}
+            <p> Icon von </p>
+            <a target="_blank" href="https://icons8.com">
+              Icons8
+            </a>
+          </div>
           {children}
         </section>
       ) : (

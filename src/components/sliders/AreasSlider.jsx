@@ -11,11 +11,19 @@ import styles from "./AreasSlider.module.css";
 const AreasSlider = (props) => {
   // const [areas, setAreas] = useState([]);
   const settings = {
-    slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToShow: 6,
+    slidesToScroll: 3,
+    arrows: false,
     responsive: [
       {
         breakpoint: 768,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 390,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -39,11 +47,11 @@ const AreasSlider = (props) => {
           <Slider {...settings}>
             {props.areas.map((area, index) => (
               <Link
+                key={index}
                 to={`/search/areas/${area.description.toLowerCase()}`}
                 className={styles.area_link}
               >
                 <button
-                  key={index}
                   className={`${styles.btn_area} ${
                     index === 0 ? styles.firstArea : ""
                   }`}

@@ -10,7 +10,8 @@
   gap: 16px;
   width: 390px;
   padding: 20px;
-  margin: 35px auto;
+  margin: 35px auto 0 auto;
+  padding-bottom: 25%;
 }
 .category_area_list {
   display: grid;
@@ -18,5 +19,29 @@
   gap: 16px;
   width: 390px;
   /* padding: 20px; */
-  margin: 35px auto;
+  margin: 35px auto 0 auto;
+  padding-bottom: 25%;
+}
+
+@media only screen and (min-width: 768px) {
+  .category_area_list {
+    grid-template-columns: repeat(6, 1fr);
+    width: 90%;
+  }
+
+  .search_result_list {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .category_area_list {
+    grid-template-columns: repeat(5, 1fr);
+    /* max-width: 768px; */
+    width: 90%;
+  }
+
+  .search_result_list {
+    width: 90%;
+  }
 }
