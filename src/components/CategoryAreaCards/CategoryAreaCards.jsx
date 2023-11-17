@@ -16,7 +16,9 @@ const CategoryAreaCards = (props) => {
               alt="meal image"
             />
           </div>
-          <p className={styles.name}>{props.item.strMeal}</p>
+          <div className={styles.name_container}>
+            <p className={styles.name}>{props.item.strMeal}</p>
+          </div>
         </div>
       </Link>
     </article>

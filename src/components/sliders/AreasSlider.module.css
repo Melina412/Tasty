@@ -14,6 +14,9 @@
   font-size: 1.4rem;
   color: var(--brand-secondary);
 }
+.slider_header a:hover {
+  text-shadow: var(--brand-secondary) 1px 0 10px;
+}
 
 .btn_area {
   border-radius: 25px;
@@ -27,13 +30,17 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: 0.3s;
 }
 .btn_area a .active {
   background-color: var(--brand-secondary);
 }
+.btn_area:hover {
+  background-color: var(--brand-secondary);
+}
 
 .area_link {
-  width: 90px !important;
+  width: 70% !important;
   text-decoration: none;
   color: var(--dark);
 }

@@ -32,16 +32,19 @@
   border-radius: 16px;
 }
 
+.name_container {
+  width: 100%;
+  max-width: 85px;
+}
+
 .name {
   font-size: 16px;
   line-height: 145%;
   color: var(--neutral-dark);
-  white-space: nowrap; /* Text wird in einer Zeile dargestellt */
   overflow: hidden;
   text-overflow: ellipsis; /* Wenn  Text zu lang ist wird ... angehängt */
   flex: 1;
-  max-width: 100px;
-  /* - max-width muss bei responsive raus, aber nur so geht das mit dem text-wrap */
+  white-space: nowrap;
 }
 
 /* - darkmode  */
@@ -57,12 +60,16 @@
 
 /* - media queries  */
 
-/* @media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) {
   .name {
-    white-space: normal;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     min-height: 47px;
+    white-space: normal;
   }
-} */
+
+  .name_container {
+    max-width: 100%;
+  }
+}
