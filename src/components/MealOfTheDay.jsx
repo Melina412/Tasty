@@ -4,7 +4,7 @@ import FetchAPI from "../functions/FetchAPI";
 import styles from "./MealOfTheDay.module.css";
 import Circle from "./Circle";
 const MealOfTheDay = (props) => {
-  console.log("von MealOfTheDay==>", props.randomMeal);
+  // console.log("von MealOfTheDay==>", props.randomMeal);
   return (
     <>
       {props.randomMeal && (

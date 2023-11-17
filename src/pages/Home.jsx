@@ -28,7 +28,7 @@ const Home = ({ children }) => {
       try {
         const response = await FetchAPI("random.php");
         if (response && response.meals) {
-          console.log("response.meals", response.meals);
+          console.log("Random-Meal", response.meals);
           const mealItem = {
             mealId: response.meals[0].idMeal,
             mealName: response.meals[0].strMeal,
