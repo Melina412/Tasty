@@ -1,9 +1,8 @@
 .main {
   padding-top: 50px;
+  padding-bottom: 25%;
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 .card {
   margin: 10px auto 0 auto;
@@ -112,10 +111,11 @@
 .icon {
   font-family: Montserrat;
   color: rgb(195, 193, 193);
-  padding-bottom: 25%;
   display: flex;
   align-items: center;
   align-self: end;
+  position: fixed;
+  bottom: 0%;
 }
 .icon a {
   text-decoration: none;
