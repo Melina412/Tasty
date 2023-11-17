@@ -14,6 +14,10 @@
   display: inline-block;
 }
 
+.dark .item_category h3 {
+  color: var(--white);
+}
+
 @media only screen and (min-width: 768px) {
   .img_category {
     width: 200px;
