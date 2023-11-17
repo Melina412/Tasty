@@ -32,7 +32,7 @@ const AreasSlider = (props) => {
     ],
   };
 
-  console.log("Von AreasSlider==>", props.areas);
+  // console.log("Von AreasSlider==>", props.areas);
 
   return (
     <>
