@@ -32,7 +32,7 @@ const Profile = ({ children }) => {
     'favoriteFood',
     favoriteFood.value
   );
-  const [localProfileImage, setLocalProfileImage] = useLocalStorage('profleImage', image);
+  const [localProfileImage, setLocalProfileImage] = useLocalStorage('profileImage', image);
 
   useEffect(() => {
     if (localFullName && localFullName !== fullName.value) {
@@ -82,7 +82,7 @@ const Profile = ({ children }) => {
   };
 
   const handleNewImage = () => {
-    const newImage = `${randomImage}?=${crypto.randomUUID()}`;
+    const newImage = `${randomImage}?u=${Math.floor(Math.random() * 10000) + 1}`;
     setImage(newImage);
     setLocalProfileImage(newImage);
   };
@@ -107,7 +107,7 @@ const Profile = ({ children }) => {
                     className={styles.input}
                     type="text"
                     value={fullName.value}
-                    onChange={(e) => handleShowInput(e.target.value, setFullName, 20)}
+                    onChange={(e) => handleShowInput(e.target.value, setFullName, 18)}
                     onKeyUp={(e) =>
                       handleKeyPress(e, setFullName, fullName.value, setLocalFullName)
                     }
@@ -141,7 +141,7 @@ const Profile = ({ children }) => {
                     className={styles.input}
                     type="text"
                     value={userName.value}
-                    onChange={(e) => handleShowInput(e.target.value, setUserName, 20)}
+                    onChange={(e) => handleShowInput(e.target.value, setUserName, 18)}
                     onKeyUp={(e) =>
                       handleKeyPress(e, setUserName, userName.value, setLocalUserName)
                     }
