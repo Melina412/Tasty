@@ -1,11 +1,15 @@
-import SearchResultCards from '../SearchResultCards/SearchResultCards';
-import CategoryAreaCards from '../CategoryAreaCards/CategoryAreaCards.jsx';
-import styles from './List.module.css';
+import SearchResultCards from "../SearchResultCards/SearchResultCards";
+import CategoryAreaCards from "../CategoryAreaCards/CategoryAreaCards.jsx";
+import styles from "./List.module.css";
 
 const List = ({ currentData, categories }) => {
   return (
-    <>
-      <section className={categories ? styles.search_result_list : styles.category_area_list}>
+    <div className={styles.list_container}>
+      <section
+        className={
+          categories ? styles.search_result_list : styles.category_area_list
+        }
+      >
         {currentData.meals && currentData.meals.length > 0 ? (
           currentData.meals.map((item, index) =>
             categories ? (
@@ -13,7 +17,7 @@ const List = ({ currentData, categories }) => {
                 key={index}
                 item={item}
                 categories={
-                  categories === 'home' || categories === 'areas'
+                  categories === "home" || categories === "areas"
                     ? item.strCategory
                     : categories.charAt(0).toUpperCase() + categories.slice(1)
                 }
@@ -26,7 +30,7 @@ const List = ({ currentData, categories }) => {
           <p>noch keine Daten verfügbar...</p>
         )}
       </section>
-    </>
+    </div>
   );
 };
 
