@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import FetchAPI from "../../functions/FetchAPI";
+import { ThemeContext } from "../../context/Context";
 
 import Slider from "react-slick";
 
@@ -9,6 +10,7 @@ import styles from "./AreasSlider.module.css";
 import c_styles from "./CategoriesSlider.module.css";
 
 const CategoriesSlider = (props) => {
+  const { theme } = useContext(ThemeContext);
   const settings = {
     slidesToShow: 4,
     slidesToScroll: 2,
@@ -26,7 +28,9 @@ const CategoriesSlider = (props) => {
 
   return (
     <>
-      <section className={c_styles.categorysSlider}>
+      <section
+        className={`${c_styles.categorysSlider} ${theme ? c_styles.dark : ""}`}
+      >
         <div className={styles.slider_header}>
           <h3>Categories</h3>
           {props.categorys.length > 1 && (
