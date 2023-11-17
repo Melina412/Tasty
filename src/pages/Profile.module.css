@@ -47,7 +47,7 @@
 }
 
 .inputcontainer textarea {
-  height: 100px;
+  height: 140px;
   width: 100%;
   border: 1px solid var(--brand-secondary);
   border-radius: 20px;
